@@ -1,0 +1,35 @@
+.menu {
+	background: white;
+	.navbar.navbar-expand-sm.navbar-dark {
+		display: flex;
+		justify-content: space-between;
+	}
+	.nav-link {
+		color: #333 !important;
+  }
+  
+  .nav-item {
+    padding: 0 10px 0 10px;
+  }
+
+	ul.items-hover {
+		position: absolute;
+		padding: 0;
+		list-style: none;
+		background: white;
+		display: none;
+	}
+	ul.items-hover li {
+		border-bottom: 1px dotted #333;
+	}
+	ul.items-hover li:last-child {
+		border-bottom: 0px;
+	}
+	.nav-link:hover {
+		color: red !important;
+    }
+    
+  .dropdown:hover .items-hover {
+    display: block;
+  }
+}
