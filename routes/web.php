@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 Route::resources([
     'homes' => 'HomeController',
+    'posts' => 'PostController'
 ]);
