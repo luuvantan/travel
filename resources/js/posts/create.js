@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: "POST",
-      url : "http://127.0.0.1:8002/posts",
+      url : "http://127.0.0.1:8000/posts",
       data: {editorContent : quillText },
       success: function (data,status, xhr)
       {
