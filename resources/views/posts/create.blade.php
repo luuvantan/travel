@@ -40,43 +40,22 @@ var quill = new Quill('#editor-container', {
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 <body>
-  <div id="editor"></div>
+  	<form action="{{ route('posts.store') }}" method ="post">
+        
+		<input name="content" type="hidden">
+		<input type="hidden" name="_token" id="csrf-token">
+        <div id="editor">
+    	
+        </div>
+        <div class="row">
+            <button id="submit" class="btn btn-primary" type="submit">Save Profile</button>
+        </div>
+    </form>
   <script src="{{ asset('js/app.js') }}"></script>
-  <!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> -->
-  <script>
-    var toolbarOptions = [
-      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-      ['blockquote', 'code-block'],
-
-      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      [{ 'direction': 'rtl' }],                         // text direction
-
-      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [ 'link', 'image', 'video', 'formula' ],          // add's image support
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-
-      ['clean']                                         // remove formatting button
-    ];
-
-    var quill = new Quill('#editor', {
-      modules: {
-        toolbar: toolbarOptions
-      },
-
-      theme: 'snow'
-    });
-    
-  </script>
+  <script src="{{ asset('js/posts/create.js') }}"></script>
 </body>
 </html>

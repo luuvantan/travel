@@ -1,0 +1,3 @@
+// search use typeahead.js
+https://viblo.asia/p/xay-dung-chuc-nang-tim-kiem-thong-minh-trong-laravel-voi-typeaheadjs-aWj53ko856m
+
