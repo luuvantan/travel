@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('Posts.index', compact('posts'));
     }
 
     /**
@@ -34,7 +37,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $t = $request->editorContent;
+        $post = new Post;
+        $post->content = $request['text'];
+        $post->save();
+
+        return view('Posts.create');
     }
 
     /**
