@@ -27,26 +27,29 @@ var quill = new Quill('#editor', {
 });
 
 $(document).ready(function() {
-  var quillText = quill.getText();
-
   $('form').on('submit', function($e) {
     $e.preventDefault();
-    var content = document.querySelector('input[name=content]');
-    console.log($('#csrf-token').val());
-    content.value = JSON.stringify(quill.getContents());
-
-    $.ajax({
-      type: "POST",
-      url : "http://127.0.0.1:8002/posts",
-      data: {editorContent : quillText },
-      success: function (data,status, xhr)
-      {
-        if(xhr.status == 200) {
-        alert("Successfully sent to database");
-        }
-      },error: function() {
-        alert("Could not send to database");
-      }       
-    });
+    $("#hiddenArea").val($("#editor .ql-editor").html());
+    $('form')[0].submit();
+    // var quillText =  JSON.stringify(quill.getContents());
+    // var content = document.querySelector('input[name=content]');
+    // content.value = JSON.stringify(quill.getContents());
+    // console.log(quillText, content);
+    // $.ajax({
+    //   type: "POST",
+    //   url : "http://127.0.0.1:8002/posts",
+    //   data: { 
+    //     editorContent : quillText,
+    //     abc: content.value
+    //     },
+    //   success: function (data,status, xhr)
+    //   {
+    //     if(xhr.status == 200) {
+    //     alert("Successfully sent to database");
+    //     }
+    //   },error: function() {
+    //     alert("Could not send to database");
+    //   }       
+    // });
   });
 });

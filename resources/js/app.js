@@ -4,3 +4,8 @@ require('./bootstrap');
 
 window.Quill = require('Quill');
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
