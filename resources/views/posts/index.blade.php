@@ -6,6 +6,8 @@
         <div>
             {!! $post->content !!}
         </div>
+        <div class="row">
+        </div>
         @endforeach
     </div>
 @endsection
