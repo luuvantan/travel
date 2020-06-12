@@ -3,7 +3,7 @@
 <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 @section('content')
     <div class="container">
-        <form action="{{ route('posts.store') }}" method ="post">
+        <form id="form-post" action="{{ route('posts.store') }}" method ="post">
             @csrf
             <div class="row h-100">
                 <input id="hihi" name="content" type="hidden">

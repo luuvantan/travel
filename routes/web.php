@@ -19,5 +19,10 @@ Route::get('/', function () {
 
 Route::resources([
     'homes' => 'HomeController',
-    'posts' => 'PostController'
+    'posts' => 'PostController',
+    'indexs' => 'IndexController'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

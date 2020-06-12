@@ -1,3 +1,7 @@
 // search use typeahead.js
 https://viblo.asia/p/xay-dung-chuc-nang-tim-kiem-thong-minh-trong-laravel-voi-typeaheadjs-aWj53ko856m
 
+//rating post
+https://github.com/dreyescat/bootstrap-rating
+http://dreyescat.github.io/bootstrap-rating/
+https://viblo.asia/p/tao-rating-voi-bootstrap-rating-bJzKmLyO59N

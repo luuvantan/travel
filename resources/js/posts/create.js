@@ -30,7 +30,7 @@ $(document).ready(function() {
   $('form').on('submit', function($e) {
     $e.preventDefault();
     $("#hiddenArea").val($("#editor .ql-editor").html());
-    $('form')[0].submit();
+    $('#form-post')[0].submit();
     // var quillText =  JSON.stringify(quill.getContents());
     // var content = document.querySelector('input[name=content]');
     // content.value = JSON.stringify(quill.getContents());

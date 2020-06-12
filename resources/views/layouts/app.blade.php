@@ -128,5 +128,4 @@
     @stack('footer')
     @yield('js')
 </body>
-
 </html>
