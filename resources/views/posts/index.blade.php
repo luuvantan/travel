@@ -1,7 +1,7 @@
 @extends('layouts.app')
-<link href="{{ asset('css/overview.css') }}" rel="stylesheet">
+<link href="{{ asset('css/post.css') }}" rel="stylesheet">
 @section('content')
-    <div class="container">
+    <div class="container post-index">
         @foreach($posts as $key => $post)
         <div>
             {!! $post->content !!}

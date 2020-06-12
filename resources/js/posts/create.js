@@ -20,19 +20,13 @@ var toolbarOptions = [
 
 var quill = new Quill('#editor', {
   modules: {
-    toolbar: { 
-        toolbarOptions,
-        handlers: {
-            'image': customImageBehavior
-        }
-    }
+    toolbar: toolbarOptions
   },
 
   theme: 'snow'
 });
 
 $(document).ready(function() {
-
   $('form').on('submit', function($e) {
     $e.preventDefault();
     $("#hiddenArea").val($("#editor .ql-editor").html());
