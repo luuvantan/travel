@@ -4,7 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 window.$ = window.jQuery = require('jquery');
+
 require('./bootstrap');
+require('bootstrap-rating/bootstrap-rating.js');
 // require('./quill.js');
 
 window.Quill = require('Quill');

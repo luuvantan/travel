@@ -1,16 +1,18 @@
 .menu {
-	background: white;
+    // background-color: white;
 	.navbar.navbar-expand-sm.navbar-dark {
 		display: flex;
-		justify-content: space-between;
+        justify-content: space-between;
+        background-color: rgb(238, 216, 216);
+        border-bottom: 1px dotted #f8fafc;
 	}
 	.nav-link {
 		color: #333 !important;
-  }
+    }
   
-  .nav-item {
-    padding: 0 10px 0 10px;
-  }
+    .nav-item {
+        padding: 0 10px 0 10px;
+    }
 
 	ul.items-hover {
 		position: absolute;
@@ -29,7 +31,7 @@
 		color: red !important;
     }
     
-  .dropdown:hover .items-hover {
-    display: block;
-  }
+    .dropdown:hover .items-hover {
+        display: block;
+    }
 }
