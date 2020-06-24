@@ -46,6 +46,17 @@
                             </div>
                         </li>
                     </ul>
+                    <!-- form search  -->
+                    <ul>
+                        <div class="container">
+                            <div class="d-flex justify-content-center">
+                                <div class="searchbar">
+                                    <input class="search_input" type="text" name="" placeholder="Search...">
+                                    <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
 
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
