@@ -29,7 +29,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12 col-md-12">
                         <div class="card border-0" style="min-height: 80vh">
-                            <div class="card-body">
+                            <div class="">
                                 <div class="flash-message">
                                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                         @if(Session::has('alert-' . $msg))

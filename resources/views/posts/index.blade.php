@@ -46,4 +46,4 @@
 @endsection
 @push('footer')
     <script src="{{ asset('js/posts/index.js') }}"></script>
-   @endpush
+@endpush

@@ -1,37 +1,88 @@
 .menu {
     // background-color: white;
-	.navbar.navbar-expand-sm.navbar-dark {
-		display: flex;
+    .navbar.navbar-expand-sm.navbar-dark {
+        display: flex;
         justify-content: space-between;
-        background-color: rgb(238, 216, 216);
+        background-color: rgb(248, 245, 245);
+        // background-color: rgb(238, 216, 216);
         border-bottom: 1px dotted #f8fafc;
-	}
-	.nav-link {
-		color: #333 !important;
+    }
+    .nav-link {
+        color: #333 !important;
     }
   
     .nav-item {
         padding: 0 10px 0 10px;
     }
 
-	ul.items-hover {
-		position: absolute;
-		padding: 0;
-		list-style: none;
-		background: white;
-		display: none;
-	}
-	ul.items-hover li {
-		border-bottom: 1px dotted #333;
-	}
-	ul.items-hover li:last-child {
-		border-bottom: 0px;
-	}
-	.nav-link:hover {
-		color: red !important;
+    ul.items-hover {
+        position: absolute;
+        padding: 0;
+        list-style: none;
+        background: white;
+        display: none;
+    }
+    ul.items-hover li {
+        border-bottom: 1px dotted #333;
+    }
+    ul.items-hover li:last-child {
+        border-bottom: 0px;
+    }
+    .nav-link:hover {
+        color: red !important;
     }
     
     .dropdown:hover .items-hover {
         display: block;
     }
+
+    a {
+        font-size: 20px;
+    }
+}
+
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 40px;
+    background-color: rgb(238, 216, 216);
+    border-radius: 20px;
+    padding: 10px;
+    color: black;
+}
+
+.search_input{
+    color: black;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 30px;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 200px;
+    caret-color:red;
+    background: white;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon{
+    background:  rgb(238, 216, 216);
+    color: #e74c3c;
+}
+
+.search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:black;
+    text-decoration:none;
 }
