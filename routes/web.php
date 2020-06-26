@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::resources([
     'homes' => 'HomeController',
     'posts' => 'PostController',
-    'indexs' => 'IndexController'
+    'indexs' => 'IndexController',
+    'experiences' => 'ExperienceController'
 ]);
 
 Auth::routes();
