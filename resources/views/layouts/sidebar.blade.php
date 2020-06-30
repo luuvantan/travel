@@ -12,54 +12,56 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
-                                Miền Bắc
+                                Trang Chủ
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link items-menu" href="#">
+                                Du Lịch
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Mùa Xuân</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Hè</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Thu</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Đông</a>
+                                <a class="dropdown-item nav-link" href="#">Miền Bắc</a>
+                                <a class="dropdown-item nav-link" href="#">Miền Trung</a>
+                                <a class="dropdown-item nav-link" href="#">Miền Nam</a>
                             </div>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
-                                Miền Trung
+                                Kinh Nghiệm
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Mùa Xuân</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Hè</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Thu</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Đông</a>
+                                <a class="dropdown-item nav-link" href="#">Ẩm Thực</a>
+                                <a class="dropdown-item nav-link" href="#">Cẩm Nang Du Lịch</a>
+                                <a class="dropdown-item nav-link" href="#">Thông Tin Cần Biết</a>
                             </div>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
-                                Miền Nam
+                                Đăng Bài
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Mùa Xuân</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Hè</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Thu</a>
-                                <a class="dropdown-item nav-link" href="#">Mùa Đông</a>
+                                <a class="dropdown-item nav-link" href="#">Chia Sẻ</a>
+                                <a class="dropdown-item nav-link" href="#">Câu Hỏi</a>
                             </div>
                         </li>
-                    </ul>
-                    <!-- form search  -->
-                    <ul>
-                        <div class="container">
-                            <div class="d-flex justify-content-center">
-                                <div class="searchbar">
-                                    <input class="search_input" type="text" name="" placeholder="Search...">
-                                    <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </ul>
 
-                    <ul class="navbar-nav">
-                        <!-- Authentication Links -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link items-menu" href="#">
+                                Liên Hệ
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                        <form class="searchHeader searchDesktop" action="/search" method="get" itemscope="" itemtype="https://schema.org/SearchAction">
+                            <meta itemprop="target" content="https://query.example.com/search?q={q}">
+                            <input type="text" name="q" class="searchInput" placeholder="Tìm kiếm...">
+                            <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
+                        </form>
+                        </li>
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
