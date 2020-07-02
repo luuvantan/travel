@@ -16,6 +16,10 @@ class ExperienceController extends Controller
         return view('experiences.index');
     }
 
+    public function foodAndDrink()
+    {
+        return view('foodAndDrinks.index');
+    }
     /**
      * Show the form for creating a new resource.
      *

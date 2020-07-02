@@ -5,3 +5,8 @@ https://viblo.asia/p/xay-dung-chuc-nang-tim-kiem-thong-minh-trong-laravel-voi-ty
 https://github.com/dreyescat/bootstrap-rating
 http://dreyescat.github.io/bootstrap-rating/
 https://viblo.asia/p/tao-rating-voi-bootstrap-rating-bJzKmLyO59N
+
+
+//
+bảng miền, bảng tỉnh, bảng category
+

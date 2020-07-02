@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink');
+
 Route::resources([
     'homes' => 'HomeController',
     'posts' => 'PostController',

@@ -7,7 +7,7 @@
             <!-- tin tuc  -->
             <div class="col-12 title d-flex borderTittle p-2 mt-5 mb-5">
                 <label for="sel1" style="width:400px; padding-top: 7px;">
-                    Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm
+                    Kinh nghiệm >> Ẩm thực >> Địa điểm
                 </label>
                 <select class="form-control" id="sel1" name="sellist1" style="width:120px;">
                     <option>Tất cả</option>
