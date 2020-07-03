@@ -10,3 +10,12 @@ https://viblo.asia/p/tao-rating-voi-bootstrap-rating-bJzKmLyO59N
 //
 bảng miền, bảng tỉnh, bảng category
 
+
+// search menu example 
+https://codepen.io/herrjosuab/pen/YqvVNx
+
+//quyền: 4 quyền
+- thêm quyền : mod: duyệt bài, xóa comment ( thêm bảng role )
+
+// tham khao thêm chức năng upload ảnh (phải đăng nhập) và xem ảnh của mọi người (không cần đăng nhập) thêm trên menu xem hình ảnh
+https://gody.vn/blog
