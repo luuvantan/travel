@@ -59,4 +59,36 @@
         right: 15px;
         top: 8px;
     }
+  .hidden {
+    display: none;
+  }
+  .search-menu {
+    width: 650px;
+  }
+  @media only screen and (max-width: 1024px) {
+    .search-menu {
+      width: 550px;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .search-menu {
+      width: 455px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .search-menu {
+      width: 280px;
+    }
+  }
+  @media only screen and (max-width: 425px) {
+    .search-menu {
+      width: 100%;
+    }
+  }
+  .nav-item.dropdown, #searchForm, #searchBtn {
+    transition: all ease 0.5s;
+  }
+  .input-group-btn {
+    background: red;
+  }
 }

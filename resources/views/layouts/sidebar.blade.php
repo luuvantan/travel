@@ -53,14 +53,17 @@
                                 Liên Hệ
                             </a>
                         </li>
-
-                        <li class="nav-item dropdown">
-                        <form class="searchHeader searchDesktop" action="/search" method="get" itemscope="" itemtype="https://schema.org/SearchAction">
-                            <meta itemprop="target" content="https://query.example.com/search?q={q}">
-                            <input type="text" name="q" class="searchInput" placeholder="Tìm kiếm...">
-                            <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
+                      <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
+                      <div class="search-menu hidden" id="searchForm" >
+                        <form class="navbar-form" role="search">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                          </span>
+                          </div>
                         </form>
-                        </li>
+                      </div>
 
                         @guest
                             <li class="nav-item">
