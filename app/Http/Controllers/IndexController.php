@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\CrawlData;
 
 class IndexController extends Controller
 {
@@ -13,6 +14,9 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $test = new CrawlData();
+        $t = $test->file_get_contents_curl("https://blogyeuphuot.com/chia-se-kinh-nghiem-du-lich-tay-nguyen-cuc-day-du-tu-a-z.html");
+        dd($t);
         return view("homes.overview");
     }
 
