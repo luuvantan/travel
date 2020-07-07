@@ -1,7 +1,7 @@
 <?php
 namespace App\Helpers;
 
-class CrawlData
+class Crawler
 {
     public $_url = "";
 
@@ -31,6 +31,36 @@ class CrawlData
     public function DOMinnerHTML(\DOMNode $element) 
     { 
         return $element->ownerDocument->saveHTML($element); 
-    } 
+    }
+    
+    public function Crawls($url)
+    {
+        include(app_path().'\Helpers\simple_html_dom.php');
+        $getData = file_get_html($url);
+        $data = $getData->find('#genesis-content article .entry-content')[0];
+        $data->removeChild($data->last_child());
+        $data->removeChild($data->last_child());
+        $data->removeChild($data->last_child());
+
+        $images = $data->find('img');
+        foreach($images as $key => $image) {
+            $src = $image->src;
+            $changeSrc = $this->putFile($src);
+            $data->find('img')[$key]->src = $changeSrc;
+            $data->find('img')[$key]->srcset = '';
+        }
+        return $data;
+    }
+
+    public function putFile($src)
+    {
+        if(empty(\Storage::directories('public/uploads'))) {
+           \Storage::makeDirectory('uploads', 0775, true);
+        }
+        $filePath = 'public/uploads/' . \basename($src);
+        \Storage::put($filePath, file_get_contents($src));
+
+        return \Storage::url($filePath);
+    }
 }
 ?>
