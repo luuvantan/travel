@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +13,13 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-        return view("homes.overview");
+        return view('experiences.index');
     }
 
+    public function foodAndDrink()
+    {
+        return view('foodAndDrinks.index');
+    }
     /**
      * Show the form for creating a new resource.
      *
