@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink');
+Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook');
 
 Route::resources([
     'homes' => 'HomeController',
