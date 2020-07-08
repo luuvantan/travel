@@ -14,4 +14,41 @@ $(document).ready(function () {
     $('.nav-item.dropdown').removeClass("hidden");
     $("#searchForm").addClass("hidden");
   });
+  let engine = new Bloodhound({
+    remote: {
+      url: '/search?value=%QUERY%',
+      filter: function(data) {
+        return data;
+      },
+      wildcard: '%QUERY%'
+    },
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace
+  });
+
+  $("#search-ajax").typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },[
+    {
+      // source: engine1.ttAdapter(),
+      source: engine.ttAdapter(),
+      name: 'post',
+      display: function(data) {
+        return data.name;
+      },
+      templates: {
+        empty: [
+          '<div class="list-group search-results-dropdown"><div class="list-group-item list-nothing">Nothing found.</div>'
+        ],
+        header: [
+          '<div class="list-group search-results-dropdown list-show"></div>'
+        ],
+        suggestion: function (data) {
+          return '<a href="/post/' + data.id + '" class="list-group-item list-show">' + data.name + '</a>';
+        }
+      }
+    }]
+    );
 });

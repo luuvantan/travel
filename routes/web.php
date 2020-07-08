@@ -29,3 +29,4 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search', 'PostController@searchByValue')->name('autocomplete');

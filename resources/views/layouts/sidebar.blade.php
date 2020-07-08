@@ -57,7 +57,7 @@
                       <div class="search-menu hidden" id="searchForm" >
                         <form class="navbar-form" role="search">
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search" id="search-ajax" autocomplete="on">
                             <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                           </span>

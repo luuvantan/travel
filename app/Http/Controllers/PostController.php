@@ -89,4 +89,23 @@ class PostController extends Controller
     {
         //
     }
+
+    /**
+     * Search by name or title or content.
+     *
+     * @param  $request
+     *
+     * @return void
+     */
+    public function searchByValue(Request $request)
+    {
+        $param = $request->only(['value']);
+        $searchs = Post::where(function ($query) use ($param) {
+            return $query->where('name', 'like', '%' . $param['value'] . '%')
+                ->orWhere('title', 'like', '%' . $param['value'] . '%')
+                ->orWhere('content', 'like', '%' . $param['value'] . '%');
+        })->get();
+
+        return response()->json($searchs);
+    }
 }
