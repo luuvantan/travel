@@ -123,11 +123,11 @@
         </main>
         @include('layouts.footer')
     </div><!-- /#app -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-{{--    <script src="{{ asset('js/typeahead.bundle.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('js/bloodhound.js') }}"></script>--}}
+    <script src="{{ asset('js/typeahead.js') }}"></script>
+
     @stack('footer')
     @yield('js')
 </body>
