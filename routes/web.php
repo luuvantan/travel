@@ -23,7 +23,8 @@ Route::resources([
     'homes' => 'HomeController',
     'posts' => 'PostController',
     'indexs' => 'IndexController',
-    'experiences' => 'ExperienceController'
+    'experiences' => 'ExperienceController',
+    'travels' => 'TravelController'
 ]);
 
 Auth::routes();

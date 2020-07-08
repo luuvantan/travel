@@ -10,7 +10,14 @@ class RegionSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        //
+    {       
+        $regions = [
+            ['name' => "Miền Bắc"],
+            ['name' => "Miền Trung"],
+            ['name' => "Miền Nam"],
+        ];
+        
+        DB::table('regions')->insert($regions);
+
     }
 }
