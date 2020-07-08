@@ -123,8 +123,11 @@
         </main>
         @include('layouts.footer')
     </div><!-- /#app -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/typeahead.js') }}"></script>
+
     @stack('footer')
     @yield('js')
 </body>
