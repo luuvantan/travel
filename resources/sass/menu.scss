@@ -104,12 +104,22 @@
     }
   }
   .nav-item.dropdown, #searchForm, #searchBtn {
-    transition: all ease 0.5s;
+    transition: all ease 0.6s;
+    height: 41px;
+  }
+  #searchBtn {
+    border: 0px;
   }
   .input-group-btn {
     background: red;
   }
   .twitter-typeahead {
     width: 92%;
+  }
+  .nav-item.dropdown {
+    border-bottom: 0;
+  }
+  .nav-link.items-menu {
+    border-bottom: 0;
   }
 }
