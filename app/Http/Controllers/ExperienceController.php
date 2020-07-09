@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class ExperienceController extends Controller
 {
@@ -11,14 +12,33 @@ class ExperienceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        return view('experiences.index');
+        $tittle = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
+
+        return view('experiences.index', \compact('tittle'));
     }
 
-    public function foodAndDrink()
+    // ẩm thực
+    public function foodAndDrink(request $request)
     {
-        return view('foodAndDrinks.index');
+        $tittle = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
+
+        return view('foodAndDrinks.index', \compact('tittle'));
+    }
+
+    // cẩm nang du lich 
+    public function travelHandBook(request $request)
+    {
+        $tittle = "Kinh nghiệm >> Thông Tin Cần Biết >> Địa điểm";
+        $hankBook = Post::where('user_id', 1)->paginate(10);
+        
+        return view('experiences.index', \compact('tittle', 'hankBook'));
+    }
+
+    public function search($request)
+    {
+
     }
     /**
      * Show the form for creating a new resource.
