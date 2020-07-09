@@ -32,7 +32,7 @@ class ExperienceController extends Controller
     public function travelHandBook(request $request)
     {
         $tittle = "Kinh nghiệm >> Thông Tin Cần Biết >> Địa điểm";
-        $provincials = Provincial::all();
+        $provincials = Provincial::orderBy('name')->get();
         $hankBook = Post::where('user_id', 1)->paginate(10);
         
         return view('experiences.index', \compact('tittle', 'provincials', 'hankBook'));

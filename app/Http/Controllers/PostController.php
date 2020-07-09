@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $provincials = Provincial::all();
+        $provincials = Provincial::orderBy('name')->get();
         $categorys = Category::all();
 
         return view('Posts.create', \compact('provincials', 'categorys'));

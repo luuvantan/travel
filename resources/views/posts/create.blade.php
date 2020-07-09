@@ -20,7 +20,10 @@
                     <label for="">Tiêu Đề :</label>
                 </div>
                 <div class="col-9">
-                    <textarea class="form-control" type="text"></textarea>
+                    <textarea class="form-control" type="text" name="tittle"></textarea>
+                    if ($errors->has('tittle')) {
+                        <div class="error">{{ $errors->first('tittle') }}</div>
+                    }
                 </div>
             </div>
             <div class="row p-2">
@@ -33,6 +36,9 @@
                             <option>{{ $provincial->name }}</option> 
                         @endforeach
                     </select>
+                    if ($errors->has('provincial_id')) {
+                        <div class="error">{{ $errors->first('provincial_id') }}</div>
+                    }
                 </div>
             </div>
             <div class="row p-2">
@@ -41,6 +47,9 @@
                 </div>
                 <div class="col-9">
                     <input class="form-control" type="text">
+                    if ($errors->has('place')) {
+                        <div class="error">{{ $errors->first('place') }}</div>
+                    }
                 </div>
             </div>
             <div class="row p-2">
@@ -53,6 +62,9 @@
                         <option>{{ $category->name }}</option> 
                     @endforeach
                 </select>
+                if ($errors->has('category_id')) {
+                    <div class="error">{{ $errors->first('category_id') }}</div>
+                }
                 </div>
             </div>
             <div class="row p-2">
@@ -61,6 +73,9 @@
                 </div>
                 <div class="col-9">
                     <input class="" type="file">
+                    if ($errors->has('image')) {
+                        <div class="error">{{ $errors->first('image') }}</div>
+                    }
                 </div>
             </div>
 
