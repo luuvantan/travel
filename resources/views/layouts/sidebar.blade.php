@@ -19,6 +19,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
                                 Du Lịch
+                                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
                                 <a class="dropdown-item nav-link" href="#">Miền Bắc</a>
@@ -30,6 +31,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
                                 Kinh Nghiệm
+                                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
                                 <a class="dropdown-item nav-link" href="#">Ẩm Thực</a>
@@ -41,6 +43,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
                                 Đăng Bài
+                                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
                                 <a class="dropdown-item nav-link" href="#">Chia Sẻ</a>

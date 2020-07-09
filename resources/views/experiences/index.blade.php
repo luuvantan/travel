@@ -8,11 +8,10 @@
                 <label for="sel1" style="width:400px; padding-top: 7px;">
                     {{ $tittle }}
                 </label>
-                <select class="form-control" id="sel1" name="sellist1" style="width:120px;">
-                    <option>Tất cả</option>
-                    <option>Thái Nguyên</option>
-                    <option>3</option>
-                    <option>4</option>
+                <select class="form-control selectpicker" id="sel1" name="sellist1" style="width:200px;">
+                    @foreach($provincials as $provincial)
+                        <option>{{ $provincial->name }}</option> 
+                    @endforeach
                 </select>
             </div>
             

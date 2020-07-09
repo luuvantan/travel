@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Provincial;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -26,7 +28,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('Posts.create');
+        $provincials = Provincial::all();
+        $categorys = Category::all();
+
+        return view('Posts.create', \compact('provincials', 'categorys'));
     }
 
     /**
@@ -39,6 +44,9 @@ class PostController extends Controller
     {
         $t = $request->editorContent;
         $post = new Post;
+        $post->user_id = '1';
+        $post->category_id = '1';
+        $post->provincial_id = '1';
         $post->content = $request['text'];
         $post->save();
 
