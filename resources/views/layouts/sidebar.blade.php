@@ -4,14 +4,14 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <nav class="navbar navbar-expand-sm navbar-dark">
                 <!-- Brand/logo -->
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ route('homes.index') }}">
                         <img src="/logo/travel.png" alt="logo" style="width:auto;height:70px">
                     </a>
 
                 <!-- Links -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
+                            <a class="nav-link items-menu" href="{{ route('homes.index') }}">
                                 Trang Chủ
                             </a>
                         </li>
@@ -22,7 +22,7 @@
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Miền Bắc</a>
+                                <a class="dropdown-item nav-link" href="{{ route('experiences.food-and-drink') }}">Miền Bắc</a>
                                 <a class="dropdown-item nav-link" href="#">Miền Trung</a>
                                 <a class="dropdown-item nav-link" href="#">Miền Nam</a>
                             </div>
@@ -34,9 +34,9 @@
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Ẩm Thực</a>
-                                <a class="dropdown-item nav-link" href="#">Cẩm Nang Du Lịch</a>
-                                <a class="dropdown-item nav-link" href="#">Thông Tin Cần Biết</a>
+                                <a class="dropdown-item nav-link" href="{{ route('experiences.food-and-drink') }}">Ẩm Thực</a>
+                                <a class="dropdown-item nav-link" href="{{ route('experiences.travel-hand-book') }}">Cẩm Nang Du Lịch</a>
+                                <a class="dropdown-item nav-link" href="{{ route('experiences.information') }}">Thông Tin Cần Biết</a>
                             </div>
                         </li>
 
@@ -79,7 +79,9 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    style="padding-top: 6.5px !important;" aria-haspopup="true" aria-expanded="false" v-pre>
+
                                     <img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ Auth::user()->avatar }}">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

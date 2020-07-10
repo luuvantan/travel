@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Provincial;
+use Illuminate\Support\Str;
 
 class ExperienceController extends Controller
 {
@@ -15,27 +17,40 @@ class ExperienceController extends Controller
      */
     public function index(request $request)
     {
-        $tittle = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
+        $title = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
+        $provincials = Provincial::orderBy('name')->get();
 
-        return view('experiences.index', \compact('tittle'));
+        return view('experiences.index', \compact('title', 'provincials'));
     }
 
     // ẩm thực
     public function foodAndDrink(request $request)
     {
-        $tittle = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
+        $title = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
+        $provincials = Provincial::orderBy('name')->get();
 
-        return view('foodAndDrinks.index', \compact('tittle'));
+        return view('experiences.index', \compact('title', 'provincials'));
     }
 
     // cẩm nang du lich 
     public function travelHandBook(request $request)
     {
-        $tittle = "Kinh nghiệm >> Thông Tin Cần Biết >> Địa điểm";
+        $title = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
-        $hankBook = Post::where('user_id', 1)->paginate(10);
+        $datas = DB::table('posts')
+                    ->where('category_id', 4)
+                    ->paginate(1);
+
+        return view('experiences.index', \compact('title', 'provincials', 'datas'));
+    }
+
+    public function information(Request $request)
+    {
+        $title = "Kinh nghiệm >> Thông Tin Cần Biết >> Địa điểm";
+        $provincials = Provincial::orderBy('name')->get();
+        $datas = Post::where('user_id', 1)->paginate(1);
         
-        return view('experiences.index', \compact('tittle', 'provincials', 'hankBook'));
+        return view('experiences.index', \compact('title', 'provincials', 'datas'));
     }
 
     public function search($request)

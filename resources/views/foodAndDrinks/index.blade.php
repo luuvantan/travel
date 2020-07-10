@@ -4,21 +4,19 @@
 <div class="container">
     <section id="tabs" class="project-tab">
         <div class="row">
-            <!-- tin tuc  -->
-            <div class="col-12 title d-flex borderTittle p-2 mt-5 mb-5">
+            <div class="col-12 title d-flex border-tittle p-2 mt-5 mb-2">
                 <label for="sel1" style="width:400px; padding-top: 7px;">
-                    Kinh nghiệm >> Ẩm thực >> Địa điểm
+                    {{ $tittle }}
                 </label>
-                <select class="form-control" id="sel1" name="sellist1" style="width:120px;">
-                    <option>Tất cả</option>
-                    <option>Thái Nguyên</option>
-                    <option>3</option>
-                    <option>4</option>
+                <select class="form-control selectpicker" id="sel1" name="sellist1" style="width:200px;">
+                    @foreach($provincials as $provincial)
+                        <option>{{ $provincial->name }}</option> 
+                    @endforeach
                 </select>
             </div>
             
             <div class="col-md-12">
-                <div class="row mg-bot30">
+                <div class="row mg-bot30 show-item">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 mg-bot">
                         <a href="/du-lich-bang-hinh-anh/du-lich-can-gio-choi-gi-va-an-o-dau-v6591.aspx" title="Du lịch Cần Giờ chơi gì và ăn ở đâu?">
                         <img src="https://wiki-travel.com.vn/uploads/post/camnhi-201526111540-du-lich-can-gio.png" class="img-responsive pic-news-l" alt="Du lịch Cần Giờ chơi gì và ăn ở đâu?"></a>
@@ -50,7 +48,8 @@
                 </div>
             </div>
 
-            <div class="row mg-bot30">
+            <div class="col-md-12">
+                <div class="show-item row mg-bot30">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 mg-bot">
                         <a href="/du-lich-bang-hinh-anh/du-lich-can-gio-choi-gi-va-an-o-dau-v6591.aspx" title="Du lịch Cần Giờ chơi gì và ăn ở đâu?">
                         <img src="https://wiki-travel.com.vn/uploads/post/camnhi-201526111540-du-lich-can-gio.png" class="img-responsive pic-news-l" alt="Du lịch Cần Giờ chơi gì và ăn ở đâu?"></a>

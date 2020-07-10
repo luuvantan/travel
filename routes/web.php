@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink');
-Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook');
+Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink')->name('experiences.food-and-drink');
+Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook')->name('experiences.travel-hand-book');
+Route::get('/experiences/information', 'ExperienceController@information')->name('experiences.information');
 Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
 
 Route::resources([
