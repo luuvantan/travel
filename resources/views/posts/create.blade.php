@@ -3,7 +3,7 @@
 <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 @section('content')
     <div class="container mt-5">
-        <form id="form-post" action="{{ route('posts.store') }}" method ="post">
+        <form enctype="multipart/form-data" id="form-post" action="{{ route('posts.store') }}" method ="post">
             @csrf
 
             <!-- <div class="row p-2">
@@ -15,71 +15,78 @@
                 </div>
             </div> -->
 
-            <div class="row p-2">
+            <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Tiêu Đề :</label>
+                    <label for="">Tiêu Đề Bài Viết :</label>
                 </div>
                 <div class="col-9">
-                    <textarea class="form-control" type="text" name="tittle"></textarea>
-                    if ($errors->has('tittle')) {
-                        <div class="error">{{ $errors->first('tittle') }}</div>
-                    }
+                    <textarea class="form-control" type="text" name="title">{{ old('title') }}</textarea>
+                    @if($errors->has('title')) 
+                        <div class="error color-red">{{ $errors->first('title') }}</div>
+                    @endif
                 </div>
             </div>
-            <div class="row p-2">
+
+            <div class="row p-3">
+                <div class="col-3">
+                    <label for="">Ảnh Tiêu Đề :</label>
+                </div>
+                <div class="col-9">
+                    <input id="upload" class="" type="file" name="image">
+                    @if($errors->has('image'))
+                        <div class="error color-red">{{ $errors->first('image') }}</div>
+                    @endif
+                    <img src="" alt="" id="img" class="img-resize hidden">
+                </div>
+            </div>
+
+            <div class="row p-3">
                 <div class="col-3">
                     <label for="">Địa Điểm :</label>
                 </div>
                 <div class="col-9">
-                    <select id="provincial" name="provincial" class="form-control" style="width: 100%;">
+                    <select id="provincial" name="provincial_id" class="form-control" style="width: 100%;">
+                        <option value="">----- Chọn Địa Điểm ------</option>
                         @foreach($provincials as $provincial)
-                            <option>{{ $provincial->name }}</option> 
+                            <option value="{{ $provincial->id }}">{{ $provincial->name }}</option> 
                         @endforeach
                     </select>
-                    if ($errors->has('provincial_id')) {
-                        <div class="error">{{ $errors->first('provincial_id') }}</div>
-                    }
+                    @if($errors->has('provincial_id'))
+                        <div class="error color-red">{{ $errors->first('provincial_id') }}</div>
+                    @endif
                 </div>
             </div>
-            <div class="row p-2">
+
+            <div class="row p-3">
                 <div class="col-3">
                     <label for="">Địa Danh Cụ Thể :</label>
                 </div>
                 <div class="col-9">
-                    <input class="form-control" type="text">
-                    if ($errors->has('place')) {
-                        <div class="error">{{ $errors->first('place') }}</div>
-                    }
+                    <input class="form-control" type="text" name="place" value="{{ old('place') }}">
+                    @if($errors->has('place'))
+                        <div class="error color-red">{{ $errors->first('place') }}</div>
+                    @endif
                 </div>
             </div>
-            <div class="row p-2">
+
+            <div class="row p-3">
                 <div class="col-3">
                     <label for="">Thể Loại :</label>
                 </div>
                 <div class="col-9">
-                <select id="category" name="category" class="form-control" style="width: 100%;">
+                <select id="category" name="category_id" class="form-control" style="width: 100%;">
+                    <option value="">----- Chọn thể loại ------</option>
                     @foreach($categorys as $category)
-                        <option>{{ $category->name }}</option> 
+                        <option value="{{ $category->id }}">{{ $category->name }}</option> 
                     @endforeach
                 </select>
-                if ($errors->has('category_id')) {
-                    <div class="error">{{ $errors->first('category_id') }}</div>
-                }
+                @if($errors->has('category_id'))
+                    <div class="error color-red">{{ $errors->first('category_id') }}</div>
+                @endif
                 </div>
             </div>
-            <div class="row p-2">
-                <div class="col-3">
-                    <label for="">Ảnh :</label>
-                </div>
-                <div class="col-9">
-                    <input class="" type="file">
-                    if ($errors->has('image')) {
-                        <div class="error">{{ $errors->first('image') }}</div>
-                    }
-                </div>
-            </div>
-
-            <div class="row p-2">
+            
+            <div class="row p-3">
                 <div class="col-3">
                     <label for="">Nội Dung :</label>
                 </div>
@@ -94,7 +101,7 @@
                 </div>
             </div>     
 
-            <div class="row p-2">
+            <div class="row p-3">
                 <div class="col-3">
                    
                 </div>

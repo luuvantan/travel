@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink');
 Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook');
+Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
 
 Route::resources([
     'homes' => 'HomeController',
@@ -31,4 +32,3 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/search', 'PostController@searchByValue')->name('autocomplete');

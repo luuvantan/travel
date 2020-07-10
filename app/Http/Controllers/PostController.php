@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Provincial;
 use App\Models\Category;
+use App\Http\Requests\CreatePost;
 
 class PostController extends Controller
 {
@@ -40,17 +41,27 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePost $request)
     {
-        $t = $request->editorContent;
         $post = new Post;
-        $post->user_id = '1';
-        $post->category_id = '1';
-        $post->provincial_id = '1';
+        $post->user_id = \Auth::user()->id;
+        $post->title = $request['title'];
+        $post->provincial_id = $request['provincial_id'];
+        $post->category_id = $request['category_id'];
+        $post->place = $request['place'];
         $post->content = $request['text'];
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+             $filePath = 'public/'. $request['category_id']. '/' . $request['provincial_id'] . '/' . $name;
+             \Storage::put($filePath, file_get_contents($image));
+     
+             $post->url_img = \Storage::url($filePath);
+        }
         $post->save();
 
-        return view('Posts.create');
+        return back()->with('success','success');
     }
 
     /**

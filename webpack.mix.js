@@ -22,3 +22,4 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/experience.scss', 'public/css');
 
 mix.copyDirectory('resources/images/image', 'public/images/image')
+    .copyDirectory('resources/images/logo', 'public/images/logo')

@@ -13,7 +13,7 @@ class CreatePost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,7 +28,7 @@ class CreatePost extends FormRequest
             'provincial_id' =>'required',
             'place' =>'required',
             'title' => 'required|unique:posts|max:255',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
+            'image' => 'image|mimes:jpeg,jpg,png,gif|required|max:5120'
         ];
     }
 
@@ -39,8 +39,9 @@ class CreatePost extends FormRequest
             'provincial_id.required' => 'Địa điểm không được để trống',
             'place.required' => 'Địa danh cụ thể không được để trống',
             'title.required' => 'Tiêu đề không được để trống',
-            'image.required' => 'Ảnh không được để trống',
-            'image.mimes' => 'Ảnh phải đúng định dạng'
+            'image.required' => 'Ảnh tiêu đề không được để trống',
+            'image.image' => 'Ảnh tiêu đề phải là ảnh',
+            'image.mimes' => 'Ảnh tiêu đề phải đúng định dạng'
         ];
     }
 }
