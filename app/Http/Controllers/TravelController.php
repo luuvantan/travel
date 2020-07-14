@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Provincial;
+use Illuminate\Support\Str;
 
 class TravelController extends Controller
 {
@@ -11,9 +15,78 @@ class TravelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return redirect()->route('travels.northern');
+    }
+
+    // mien bac
+    public function northern(Request $request)
+    {
+        $title = "Du Lịch >> Miền Bắc >> Địa điểm";
+        $provincials = Provincial::where('region_id', 1)->orderBy('name')->get();
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 1)
+                    ->paginate(1);
+        } else {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 1)
+                    ->where('provincial_id', $provincialId)
+                    ->paginate(1);
+        }
+        
+        return view('travels.index', \compact('title', 'provincials', 'datas'));
+    }
+
+    // mien trung
+    public function central(Request $request)
+    {
+        $title = "Du Lịch >> Miền Trung >> Địa điểm";
+        $provincials = Provincial::where('region_id', 2)->orderBy('name')->get();
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 2)
+                    ->paginate(1);
+        } else {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 2)
+                    ->where('provincial_id', $provincialId)
+                    ->paginate(1);
+        }
+        
+        return view('travels.index', \compact('title', 'provincials', 'datas'));
+    }
+
+    // mien nam
+    public function southern(Request $request)
+    {
+        $title = "Du Lịch >> Miền Nam >> Địa điểm";
+        $provincials = Provincial::where('region_id', 3)->orderBy('name')->get();
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 3)
+                    ->paginate(1);
+        } else {
+            $datas = DB::table('posts')
+                    ->where('category_id', 3)
+                    // ->where('region_id', 3)
+                    ->where('provincial_id', $provincialId)
+                    ->paginate(1);
+        }
+        
+        return view('travels.index', \compact('title', 'provincials', 'datas'));
     }
 
     /**

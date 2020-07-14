@@ -17,10 +17,7 @@ class ExperienceController extends Controller
      */
     public function index(request $request)
     {
-        $title = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
-        $provincials = Provincial::orderBy('name')->get();
-
-        return view('experiences.index', \compact('title', 'provincials'));
+        return redirect()->route('experiences.food-and-drink');
     }
 
     // ẩm thực
@@ -28,8 +25,21 @@ class ExperienceController extends Controller
     {
         $title = "Kinh nghiệm >> Ẩm Thực >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = DB::table('posts')
+                    ->where('category_id', 1)
+                    ->paginate(1);
+        } else {
+            $datas = DB::table('posts')
+                    ->where('category_id', 1)
+                    ->where('provincial_id', $provincialId)
+                    ->paginate(1);
+        }
+        
 
-        return view('experiences.index', \compact('title', 'provincials'));
+        return view('experiences.index', \compact('title', 'provincials', 'datas'));
     }
 
     // cẩm nang du lich 
@@ -37,9 +47,19 @@ class ExperienceController extends Controller
     {
         $title = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
-        $datas = DB::table('posts')
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = DB::table('posts')
                     ->where('category_id', 4)
                     ->paginate(1);
+        } else {
+            $datas = DB::table('posts')
+                    ->where('category_id', 4)
+                    ->where('provincial_id', $provincialId)
+                    ->paginate(1);
+        }
+        
 
         return view('experiences.index', \compact('title', 'provincials', 'datas'));
     }

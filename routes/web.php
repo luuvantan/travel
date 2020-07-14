@@ -21,6 +21,9 @@ Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink')->
 Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook')->name('experiences.travel-hand-book');
 Route::get('/experiences/information', 'ExperienceController@information')->name('experiences.information');
 Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
+Route::get('/travels/northern', 'TravelController@northern')->name('travels.northern');
+Route::get('/travels/central', 'TravelController@central')->name('travels.central');
+Route::get('/travels/southern', 'TravelController@southern')->name('travels.southern');
 
 Route::resources([
     'homes' => 'HomeController',

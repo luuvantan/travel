@@ -1,5 +1,5 @@
 @extends('layouts.app')
-    <link href="{{ asset('css/experience.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/travel.css') }}" rel="stylesheet">
 @section('content')
 <div class="container">
     <section id="tabs" class="project-tab">
@@ -57,5 +57,5 @@
 @endsection
 
 @push('footer')
-    <script src="{{ asset('js/experiences/index.js') }}"></script>
+    <script src="{{ asset('js/travels/index.js') }}"></script>
 @endpush

@@ -5,7 +5,7 @@
                 <nav class="navbar navbar-expand-sm navbar-dark">
                 <!-- Brand/logo -->
                     <a class="navbar-brand" href="{{ route('homes.index') }}">
-                        <img src="/logo/travel.png" alt="logo" style="width:auto;height:70px">
+                        <img src="/images/logo/travel.png" alt="logo" style="width:auto;height:70px">
                     </a>
 
                 <!-- Links -->
@@ -22,9 +22,9 @@
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="{{ route('experiences.food-and-drink') }}">Miền Bắc</a>
-                                <a class="dropdown-item nav-link" href="#">Miền Trung</a>
-                                <a class="dropdown-item nav-link" href="#">Miền Nam</a>
+                                <a class="dropdown-item nav-link" href="{{ route('travels.northern') }}">Miền Bắc</a>
+                                <a class="dropdown-item nav-link" href="{{ route('travels.central') }}">Miền Trung</a>
+                                <a class="dropdown-item nav-link" href="{{ route('travels.southern') }}">Miền Nam</a>
                             </div>
                         </li>
 
