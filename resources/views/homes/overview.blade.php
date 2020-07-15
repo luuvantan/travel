@@ -239,29 +239,23 @@
 
         <div class="col-3 float-right" style="padding-left: 15px">
             <div class="title p-2 d-flex justify-content-center color-red" style="border-left: 3px solid #3c98ca;">TIN TỨC MỚI</div>
-            <div class="wrap-img-text mt-3">
-                <div>
-                    <img src="/images/image/5.jpg" alt="" style="max-width: 74px;" class="float-left hover-img">
+            <div class="wrap-img-text mt-4 mb-2">
+                <div class="">
+                    <img src="/images/image/5.jpg" alt="" style="max-width: 74px;" class="float-left hover-img mt-2">
                 </div>
                 <div class="text">
-                    <div>
-                        <a href="" class="color-green">QUẢNG NAM</a>
-                    </div>
-                    <h4 class="category"></h4>
+                    <a href="" class="color-green">QUẢNG NAM</a>
                     <p class="text-title"><b>Sắc màu ngập tràn làng chiếu Thạch Bàn, Quảng Nam</b></p>
-                    <p class="text-text">Cùng Phượt – Làng chiếu Bàn Thạch, một làng nghề</p>
                 </div>
                 <hr>
             </div>
-            <div class="wrap-img-text mt-3">
-                <img src="/images/image/5.jpg" alt="" style="width: 74px;" class="float-left">
+            <div class="wrap-img-text mt-4 mb-2">
+                <div class="">
+                    <img src="/images/image/5.jpg" alt="" style="max-width: 74px;" class="float-left hover-img mt-2">
+                </div>
                 <div class="text">
-                    <div>
-                        <a href="" class="color-green">QUẢNG NAM</a>
-                    </div>
-                    <h4 class="category"></h4>
-                    <p class="text-title"><b>Sắc màu ngập tràn làng chiếu Thạch Bàn</b></p>
-                    <p class="text-text">Cùng Phượt – Làng chiếu Bàn Thạch, một làng nghề</p>
+                    <a href="" class="color-green">QUẢNG NAM</a>
+                    <p class="text-title"><b>Sắc màu ngập tràn làng chiếu Thạch Bàn, Quảng Nam</b></p>
                 </div>
                 <hr>
             </div>

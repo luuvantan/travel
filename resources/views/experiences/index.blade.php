@@ -27,7 +27,7 @@
                         <div class="frame-news">
                             <div class="frame-top">
                                 <h2 class="news-title-l">
-                                    <a href="#"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
+                                    <a href="{{ $data->link }}"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
                                 </h2>
                                 <div class="frame-date">
                                     <div class="f-left"><img src="" alt="date"></div>

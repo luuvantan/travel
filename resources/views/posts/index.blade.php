@@ -2,7 +2,6 @@
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 @section('content')
     <div class="container post-index">
-        @foreach($posts as $key => $post)
         <div class="">
             {!! $post->content !!}
         </div>
@@ -41,7 +40,6 @@
                 <button class="btn btn-primary mr-2" style="float:right;" type="submit">Post Comment</button>
             </div>
         </div>
-        @endforeach
     </div>
 @endsection
 @push('footer')

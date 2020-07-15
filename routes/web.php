@@ -24,6 +24,7 @@ Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
 Route::get('/travels/northern', 'TravelController@northern')->name('travels.northern');
 Route::get('/travels/central', 'TravelController@central')->name('travels.central');
 Route::get('/travels/southern', 'TravelController@southern')->name('travels.southern');
+Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
 
 Route::resources([
     'homes' => 'HomeController',
@@ -34,5 +35,3 @@ Route::resources([
 ]);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

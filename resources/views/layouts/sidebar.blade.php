@@ -46,7 +46,7 @@
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
                             <div class="dropdown-menu items-hover">
-                                <a class="dropdown-item nav-link" href="#">Chia Sẻ</a>
+                                <a class="dropdown-item nav-link" href="{{ route('posts.create') }}">Chia Sẻ</a>
                                 <a class="dropdown-item nav-link" href="#">Câu Hỏi</a>
                             </div>
                         </li>

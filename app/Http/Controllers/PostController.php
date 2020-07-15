@@ -15,13 +15,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::all();
 
         return view('Posts.index', compact('posts'));
     }
 
+    //pagePost
+    public function pagePost(Request $request, $title, $id_post) 
+    {
+        $post = Post::where('id', $id_post)->first();
+
+        return view('Posts.index', compact('post'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,10 +61,10 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
-             $filePath = 'public/'. $request['category_id']. '/' . $request['provincial_id'] . '/' . $name;
-             \Storage::put($filePath, file_get_contents($image));
+            $filePath = 'public/'. $request['category_id']. '/' . $request['provincial_id'] . '/' . $name;
+            \Storage::put($filePath, file_get_contents($image));
      
-             $post->url_img = \Storage::url($filePath);
+            $post->url_img = \Storage::url($filePath);
         }
         $post->save();
 

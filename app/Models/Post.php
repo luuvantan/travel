@@ -19,4 +19,9 @@ class Post extends Model
         'content',
         'url_img'
     ];
+    
+    public function getLinkAttribute()
+    {
+        return route('page.post', ['title' => \Str::slug($this->title), 'id' => $this->id]);
+    }
 }

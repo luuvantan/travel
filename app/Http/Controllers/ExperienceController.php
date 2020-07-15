@@ -49,14 +49,13 @@ class ExperienceController extends Controller
         $provincials = Provincial::orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        
         if(empty($provincialId)) {
-            $datas = DB::table('posts')
-                    ->where('category_id', 4)
+            $datas = Post::where('category_id', 4)
                     ->paginate(1);
         } else {
-            $datas = DB::table('posts')
-                    ->where('category_id', 4)
-                    ->where('provincial_id', $provincialId)
+            $datas = Post::where('category_id', 4)
+                    ->where('provincial_id', $provincialId['id'])
                     ->paginate(1);
         }
         
