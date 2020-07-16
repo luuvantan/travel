@@ -1,5 +1,7 @@
 .menu {
     // background-color: white;
+    background: #f8f5f5;
+    border-bottom: 1px solid #fff;
     .navbar.navbar-expand-sm.navbar-dark {
         display: flex;
         justify-content: space-between;
@@ -122,4 +124,13 @@
   .nav-link.items-menu {
     border-bottom: 0;
   }
+  .form-control.input-form:focus {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .btn.btn-default {
+    height: 100%;
+  }
+
 }
