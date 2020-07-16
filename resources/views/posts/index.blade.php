@@ -1,7 +1,7 @@
 @extends('layouts.app')
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 @section('content')
-    <div class="container post-index">
+    <div class="card-body container post-index">
         <div class="col-md-12">
            
         </div>

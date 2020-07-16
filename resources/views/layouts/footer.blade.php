@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small teal pt-4">
+<footer class="page-footer font-small teal">
 
   <!-- Footer Text -->
   <div class="container text-center text-md-left">
@@ -11,10 +11,10 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
+        <!-- <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
           repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-          harum esse fugiat. Itaque, culpa?</p>
+          harum esse fugiat. Itaque, culpa?</p> -->
 
       </div>
       <!-- Grid column -->
@@ -25,10 +25,10 @@
       <div class="col-md-6 mb-md-0 mb-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
+        <!-- <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
           commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-          excepturi hic.</p>
+          excepturi hic.</p> -->
 
       </div>
       <!-- Grid column -->
@@ -40,8 +40,8 @@
   <!-- Footer Text -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center py-3">Trai nghiem cung :
+    <a href="http://localhost:8000/homes"> travel.com</a>
   </div>
   <!-- Copyright -->
 
