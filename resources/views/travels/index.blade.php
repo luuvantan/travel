@@ -4,7 +4,7 @@
 <div class="container">
     <section id="tabs" class="project-tab">
         <div class="row">
-            <div class="col-12 title d-flex border-tittle p-2 mt-5 mb-2">
+            <div class="col-12 title d-flex border-title p-2 mt-5 mb-2">
                 <label for="sel1" style="width:400px; padding-top: 7px;">
                     {{ $title }}
                 </label>

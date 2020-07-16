@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Provincial;
+use App\Models\Category;
+use App\Http\Requests\CreatePost;
 
 class HomeController extends Controller
 {
@@ -23,7 +27,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        
-        return view("homes.overview");
+        $news = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->paginate(8);
+        $suggests = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->paginate(8);
+        $highlights = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->paginate(8);
+
+        return view("homes.overview", \compact('news', 'suggests', 'highlights'));
     }
 }

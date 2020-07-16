@@ -27,3 +27,8 @@ https://gody.vn/blog
 // Một loại phổ biến nhất là các bình luận mang nội dung nhạy cảm, tục tĩu. Các bình luận này thường chứa các từ ngữ bậy bạ, tục tĩu kèm theo.
 // giải pháp: chuyển những từ nhậy cảm thành dấu *** hoặc là đánh dấu đây là comment rác và k cho hiển thị hoặc có thể dùng regex chặn ngay khi người dùng gõ xong và alert lên thông báo mình là con người không phải con vật
 https://blogyeuphuot.com/
+
+
+
+//
+border-bottom: 1px dashed #ccc;

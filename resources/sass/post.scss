@@ -21,8 +21,13 @@
     img {
         max-width: 100%;
         height: auto;
+        margin: auto;
+        display: flex;
     }
-
+    p {
+        text-align: justify;
+        font-size: 16px;
+    }
     fieldset,
     label {
         margin: 0;
@@ -113,6 +118,13 @@
     .disabled {
         pointer-events: none;
         cursor: not-allowed;
+    }
+
+    #news-related, #news {
+        ul {
+            list-style: none;
+            padding: 0px !important;
+        }
     }
 
 }

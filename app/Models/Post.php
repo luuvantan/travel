@@ -30,4 +30,14 @@ class Post extends Model
     {
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function provincial()
+    {
+        return $this->belongsTo('App\Models\Provincial');
+    }
 }

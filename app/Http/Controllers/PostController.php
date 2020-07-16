@@ -26,8 +26,10 @@ class PostController extends Controller
     public function pagePost(Request $request, $title, $id_post) 
     {
         $post = Post::where('id', $id_post)->first();
+        // $newsRelated = Post::;
+        $news = Post::whereNotIn('id', [$id_post])->orderBy('created_at', 'DESC')->paginate(8);
 
-        return view('Posts.index', compact('post'));
+        return view('Posts.index', compact('post', 'news'));
     }
     /**
      * Show the form for creating a new resource.
