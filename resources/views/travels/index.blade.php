@@ -1,5 +1,5 @@
 @extends('layouts.app')
-    <link href="{{ asset('css/experience.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/travel.css') }}" rel="stylesheet">
 @section('content')
 <div class="container">
     <section id="tabs" class="project-tab">
@@ -27,7 +27,7 @@
                         <div class="frame-news">
                             <div class="frame-top">
                                 <h2 class="news-title-l">
-                                    <a href="{{ $data->link }}"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
+                                    <a href="#"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
                                 </h2>
                                 <div class="frame-date">
                                     <div class="f-left"><img src="" alt="date"></div>
@@ -57,5 +57,5 @@
 @endsection
 
 @push('footer')
-    <script src="{{ asset('js/experiences/index.js') }}"></script>
+    <script src="{{ asset('js/travels/index.js') }}"></script>
 @endpush

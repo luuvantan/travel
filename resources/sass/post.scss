@@ -8,6 +8,15 @@
     }
 }
 
+.img-resize {
+    height: 300px;
+    width: auto;
+}
+
+.hidden {
+    display: none
+}
+
 .post-index {
     img {
         max-width: 100%;
@@ -105,4 +114,5 @@
         pointer-events: none;
         cursor: not-allowed;
     }
+
 }

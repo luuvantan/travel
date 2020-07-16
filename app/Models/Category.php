@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Provincial extends Model
+class Category extends Model
 {
-    protected $table = 'provincials';
+    protected $table = "categories";
 }

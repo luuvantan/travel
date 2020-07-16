@@ -15,6 +15,7 @@ class RegionSeeder extends Seeder
             ['name' => "Miền Bắc"],
             ['name' => "Miền Trung"],
             ['name' => "Miền Nam"],
+            ['name' => "Nước Ngoài"]
         ];
         
         DB::table('regions')->insert($regions);
