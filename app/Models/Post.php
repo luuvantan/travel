@@ -17,11 +17,17 @@ class Post extends Model
         'place',
         'title',
         'content',
-        'url_img'
+        'url_img',
+        'status'
     ];
     
     public function getLinkAttribute()
     {
         return route('page.post', ['title' => \Str::slug($this->title), 'id' => $this->id]);
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
 }
