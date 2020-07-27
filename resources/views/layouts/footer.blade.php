@@ -11,8 +11,8 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
+        <h5 class="">Travel.tanlv.vn</h5>
+        <p>Cùng nhau chia sẻ những khoảnh khắc du lịch tuyệt vời trên mọi miền tổ quốc</p>
 
       </div>
       <!-- Grid column -->
@@ -74,8 +74,8 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center py-3">
+    <a href="">Travel.tanlv.vn</a>
   </div>
   <!-- Copyright -->
 

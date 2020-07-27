@@ -38,7 +38,7 @@ class PostController extends Controller
 
         $countVote = Vote::where('post_id', $post->id)->count('id');
         $sumVote = Vote::where('post_id', $post->id)->sum('vote');
-        $average = round($sumVote/$countVote, 1);
+        $average = ($countVote>1) ? round($sumVote/$countVote, 1) : 0;
         $userVote =  Vote::where('post_id', $post->id)->where('user_id', $user_id)->first();
 
         return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote'));
