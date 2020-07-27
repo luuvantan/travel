@@ -50,7 +50,7 @@
     }
 
     .myratings {
-        font-size: 85px;
+        font-size: 75px;
         color: green
     }
 
@@ -60,7 +60,7 @@
 
     .rating>label:before {
         margin: 3px;
-        font-size: 1.8em;
+        font-size: 1.5em;
         font-family: FontAwesome;
         display: inline-block;
         content: "\f005"
@@ -76,18 +76,23 @@
         float: right
     }
 
-    .rating>[id^="star"]:checked~label,
-    .rating:not(:checked)>label:hover,
-    .rating:not(:checked)>label:hover~label {
-        color: #FFD700
-    }
+        .guestVote>[id^="star"]:checked~label,
+        .guestVote:not(:checked)>label:hover,
+        .guestVote:not(:checked)>label:hover~label {
+            color: #FFD700;
+        }
 
-    .rating>[id^="star"]:checked+label:hover,
-    .rating>[id^="star"]:checked~label:hover,
-    .rating>label:hover~[id^="star"]:checked~label,
-    .rating>[id^="star"]:checked~label:hover~label {
-        color: #FFED85
-    }
+        .guestVote>[id^="star"]:checked+label:hover,
+        .guestVote>[id^="star"]:checked~label:hover,
+        .guestVote>label:hover~[id^="star"]:checked~label,
+        .guestVote>[id^="star"]:checked~label:hover~label {
+            color: #FFED85;
+        }
+    
+
+        .userVote>[id^="star"]:checked~label {
+            color: #ff002d;
+        }
 
     .reset-option {
         display: none

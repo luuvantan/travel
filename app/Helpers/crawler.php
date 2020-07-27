@@ -41,15 +41,20 @@ class Crawler
         $data->removeChild($data->last_child());
         $data->removeChild($data->last_child());
         $data->removeChild($data->last_child());
-
+        $data->removeChild($data->find('#toc_container')[0]);
+        $temps = $data->find('a');
+        foreach($temps as $key => $temp) {
+            $data->find('a')[$key]->href='';
+        }
         $images = $data->find('img');
         foreach($images as $key => $image) {
             $src = $image->src;
-            $changeSrc = $this->putFile($src);
-            $data->find('img')[$key]->src = $changeSrc;
+            $changeSrc[$key] = $this->putFile($src);
+            $data->find('img')[$key]->src = $changeSrc[$key];
             $data->find('img')[$key]->srcset = '';
         }
-        return $data;
+        
+        return array($data, $changeSrc[0]);
     }
 
     public function putFile($src)

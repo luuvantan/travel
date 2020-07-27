@@ -42,6 +42,8 @@ Route::get('/travels/northern', 'TravelController@northern')->name('travels.nort
 Route::get('/travels/central', 'TravelController@central')->name('travels.central');
 Route::get('/travels/southern', 'TravelController@southern')->name('travels.southern');
 Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
+Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
+Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
 
 Route::resources([
     'homes' => 'HomeController',

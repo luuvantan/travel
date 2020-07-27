@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
+use App\Models\Vote;
 use App\Models\Provincial;
 use App\Models\Category;
 use App\Http\Requests\CreatePost;
+use App\Helpers\Crawler;
 
 class PostController extends Controller
 {
@@ -17,6 +20,9 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        // $test = new Crawler();
+        // list($t, $g) = $test->Crawls("https://blogyeuphuot.com/kinh-nghiem-phuot-ta-xua-san-may-thoa-suc-check-in-song-ao.html");
+        // dd($t, $g);
         $posts = Post::all();
 
         return view('Posts.index', compact('posts'));
@@ -25,12 +31,19 @@ class PostController extends Controller
     //pagePost
     public function pagePost(Request $request, $title, $id_post) 
     {
+        $user_id = \Auth::id();
         $post = Post::where('id', $id_post)->first();
-        // $newsRelated = Post::;
+        
         $news = Post::whereNotIn('id', [$id_post])->orderBy('created_at', 'DESC')->paginate(8);
 
-        return view('Posts.index', compact('post', 'news'));
+        $countVote = Vote::where('post_id', $post->id)->count('id');
+        $sumVote = Vote::where('post_id', $post->id)->sum('vote');
+        $average = round($sumVote/$countVote, 1);
+        $userVote =  Vote::where('post_id', $post->id)->where('user_id', $user_id)->first();
+
+        return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
