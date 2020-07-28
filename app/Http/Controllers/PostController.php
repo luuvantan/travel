@@ -29,19 +29,22 @@ class PostController extends Controller
     }
 
     //pagePost
-    public function pagePost(Request $request, $title, $id_post) 
+    public function pagePost(Request $request, $title, $post_id) 
     {
         $user_id = \Auth::id();
-        $post = Post::where('id', $id_post)->first();
+        $post = Post::where('id', $post_id)->first();
         
-        $news = Post::whereNotIn('id', [$id_post])->orderBy('created_at', 'DESC')->paginate(8);
+        $news = Post::whereNotIn('id', [$post_id])->orderBy('created_at', 'DESC')->paginate(8);
 
-        $countVote = Vote::where('post_id', $post->id)->count('id');
-        $sumVote = Vote::where('post_id', $post->id)->sum('vote');
+        $votes = Vote::where('post_id', $post_id)->get();
+        $countVote = $votes->count('id');
+        $sumVote = $votes->sum('vote');
         $average = ($countVote>1) ? round($sumVote/$countVote, 1) : 0;
-        $userVote =  Vote::where('post_id', $post->id)->where('user_id', $user_id)->first();
+        $userVote =  $votes->where('user_id', $user_id)->first()->vote;
 
-        return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote'));
+        $comments = Comment::with('user:id,name,avatar')->where('post_id', $post_id)->get();
+
+        return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote', 'comments'));
     }
 
     /**

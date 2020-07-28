@@ -76,23 +76,23 @@
         float: right
     }
 
-        .guestVote>[id^="star"]:checked~label,
-        .guestVote:not(:checked)>label:hover,
-        .guestVote:not(:checked)>label:hover~label {
-            color: #FFD700;
-        }
+    .guestVote>[id^="star"]:checked~label,
+    .guestVote:not(:checked)>label:hover,
+    .guestVote:not(:checked)>label:hover~label {
+        color: #FFD700;
+    }
 
-        .guestVote>[id^="star"]:checked+label:hover,
-        .guestVote>[id^="star"]:checked~label:hover,
-        .guestVote>label:hover~[id^="star"]:checked~label,
-        .guestVote>[id^="star"]:checked~label:hover~label {
-            color: #FFED85;
-        }
-    
+    .guestVote>[id^="star"]:checked+label:hover,
+    .guestVote>[id^="star"]:checked~label:hover,
+    .guestVote>label:hover~[id^="star"]:checked~label,
+    .guestVote>[id^="star"]:checked~label:hover~label {
+        color: #FFED85;
+    }
 
-        .userVote>[id^="star"]:checked~label {
-            color: #ff002d;
-        }
+
+    .userVote>[id^="star"]:checked~label {
+        color: #ff002d;
+    }
 
     .reset-option {
         display: none
@@ -112,6 +112,7 @@
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
+        margin-top: 0px;
     }
 
     .count-rate {
@@ -132,4 +133,24 @@
         }
     }
 
+    .comment {
+        textarea {
+            border: 1px solid rgba(0,0,0,.1);
+            border-radius: 3px;
+            transition: border-color .1s ease-in;
+            min-height: 120px;
+        }
+    }
+
+    .content-post {
+        border: 1px solid rgba(0,0,0,.1);
+        border-radius: 3px;
+        transition: border-color .1s ease-in;
+        min-height: 60px !important;
+        height: auto !important;
+    }
+
+    .ql-toolbar {
+        border-bottom: 0px !important;
+    }
 }

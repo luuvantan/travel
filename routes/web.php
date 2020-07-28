@@ -44,6 +44,8 @@ Route::get('/travels/southern', 'TravelController@southern')->name('travels.sout
 Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
 Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
 Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
+Route::post('/comment/addComment', 'CommentController@addComment')->name('comment.addComment');
+Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
 
 Route::resources([
     'homes' => 'HomeController',
