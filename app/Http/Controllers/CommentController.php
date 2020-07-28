@@ -14,7 +14,7 @@ class CommentController extends Controller
         $request->validate([
             'comment'=>'required',
         ]);
-        $comment = new Comment;
+        $comment = new Comment();
         $comment->user_id = \Auth::user()->id;
         $comment->post_id = $request['post_id'];
         $comment->content = json_decode($request['comment']);

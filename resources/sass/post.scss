@@ -18,11 +18,22 @@
 }
 
 .post-index {
-    img {
-        max-width: 100%;
-        height: auto;
-        margin: auto;
-        display: flex;
+    .show-post {
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+            display: flex;
+        }
+
+        .owner-post-img {
+            max-width: auto !important;
+            margin: none !important;
+            display: initial !important;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+        }
     }
     p {
         text-align: justify;
@@ -152,5 +163,19 @@
 
     .ql-toolbar {
         border-bottom: 0px !important;
+    }
+
+    .style-date {
+        color: #9b9b9b!important;
+        font-size: 14px;
+        float: right;
+    }
+
+    .show-comment {
+        font-family: "Nunito", sans-serif !important;
+
+        a {
+            font-size: 16px;
+        }
     }
 }

@@ -64,7 +64,7 @@
                     <div class="card">
                         <img src="{{ $highlight->url_img }}" class="img-fluid card-img-top" alt="Responsive image">
                         <div class="card-body">
-                            <h4 class="card-title">$highlight->user->name</h4>
+                            <h4 class="card-title">{{ $highlight->user->name }}</h4>
                             <p class="card-text">{{ substr($highlight->title, 0, 100) }}</p>
                             <a href="{{ $highlight->link }}" class="stretched-link">Chi Tiết >></a>
                         </div>

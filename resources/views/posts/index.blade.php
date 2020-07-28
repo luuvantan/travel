@@ -7,13 +7,20 @@
         </div>
         <div class="row mt-3">
             <div class="col-md-9">
-                <div class="">
+                <div class="show-post">
+                    <div class="col-md-12 mt-2">
+                        <a href=''>
+                            <img style="" class="owner-post-img" src="{{ $post->user->avatar }}">
+                            {{ $post->user->name }}
+                        </a>
+                        <span class="" style="color: #9b9b9b!important; font-size: 14px;">/{{ $post->created_at }}</span>
+                    </div>
                     <div class="mt-2 mb-5 color-green d-flex">
                         <h1 style="padding-top: 7px;">
                             {{ $post->title }}
                         </h1>
                     </div>
-                    <div class="">
+                    <div class="col-md-12">
                         {!! $post->content !!}
                     </div>
                 </div>
@@ -27,7 +34,12 @@
                 <div class="wrap-img-text mt-4 mb-2" id="news-related">
                     <ul class="">
                         @foreach($news as $new)
-                        <li class="pb-3"><a href="{{ $new->link }}"><i class="fa fa-pencil pr-3" aria-hidden="true"></i>{{ substr($new->title, 0, 60) }} ...</a></li>
+                        <li class="pb-3">
+                            <a href="{{ $new->link }}">
+                                <i class="fa fa-pencil pr-3" aria-hidden="true"></i>
+                                {{ substr($new->title, 0, 60) }} ...
+                            </a>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -38,7 +50,12 @@
                 <div class="wrap-img-text mt-4 mb-2" id="news">
                     <ul class="">
                         @foreach($news as $new)
-                        <li class="pb-3"><a href="{{ $new->link }}"><i class="fa fa-pencil pr-3" aria-hidden="true"></i>{{ substr($new->title, 0, 60) }} ...</a></li>
+                        <li class="pb-3">
+                            <a href="{{ $new->link }}">
+                                <i class="fa fa-pencil pr-3" aria-hidden="true"></i>
+                                {{ substr($new->title, 0, 60) }} ...
+                            </a>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -53,7 +70,7 @@
                         $temp = !empty($userVote) ? $userVote : $average;
                         $rate = round($temp*2);
                     ?>
-                    <fieldset class="rating {{ !empty($userVote) ? 'userVote disabled' : 'guestVote'}}">
+                    <fieldset class="rating {{ !empty($userVote) ? 'userVote disabled' : 'guestVote'}} {{ \Auth::check() ? '' : 'disabled' }}">
                         <input type="radio" id="star5" name="rating" value="5" {{ ($rate == 10) ? 'checked' : ''}}/><label class="full" for="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4half" name="rating" value="4.5" {{ ($rate == 9) ? 'checked' : ''}}/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> 
                         <input type="radio" id="star4" name="rating" value="4" {{ ($rate == 8) ? 'checked' : ''}}/><label class="full" for="star4" title="Pretty good - 4 stars"></label> 
@@ -69,31 +86,53 @@
                 </div>   
             </div>
             <h4>Comments</p>
+            @if(\Auth::check())
             <div class="card" id="comment" data-url="{{ route('comment.addComment') }}">
-                @if(\Auth::check())
-                    <div class="row" style="padding:20px;">
-                        <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
-                        <form style="width: calc(100% - 50px)" action="" class="comment">
-                            <div class="form-group green-border-focus">
-                                <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
-                                <input id="hihi" name="content" type="hidden">
-                                <textarea name="text" style="display:none" id="hiddenArea" type="hidden" ></textarea>
-                                <div name="abc" id="editor" class="content-post">
-                                
-                                </div>
+                <div class="row" style="padding:20px;">
+                    <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
+                    <form style="width: calc(100% - 50px)" action="" class="comment">
+                        <div class="form-group green-border-focus">
+                            <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
+                            <input id="hihi" name="content" type="hidden">
+                            <textarea name="text" style="display:none" id="hiddenArea" type="hidden" ></textarea>
+                            <div name="abc" id="editor" class="content-post">
+                            
                             </div>
-                        </form> 
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary mr-2 mt-5" id="post-comment" style="float:right;" type="submit">Post Comment</button>
-                    </div>
-                @else
-                    <a href="">login</a>
-                @endif
+                        </div>
+                    </form> 
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary mr-2 mt-5" id="post-comment" style="float:right;" type="submit">Post Comment</button>
+                </div>               
             </div>
+            @else
+            <div class="card text-sm-center mb-1 cursor-pointer">
+                <div class="card-body">
+                    <a href="{{ route('login') }}">
+                        <span class="card-text text-muted">
+                            <i aria-hidden="true" class="fa fa-comment-o"></i>
+                            Login to comment
+                        </span>
+                    </a>
+                    
+                </div>
+            </div>
+                <!-- <a href="">login</a> -->
+            @endif
 
-            @foreach()
-            <div class="card">
+            @foreach($comments as $key=>$comment)
+            <div class="card mt-3 show-comment">
+                <div class="col-md-12 mt-2">
+                    <a href=''>
+                        <img style="width: 22px;height: 22px;border-radius: 50%;"
+                             class="" src="{{ $comment->user->avatar }}">
+                        {{ $comment->user->name }}
+                    </a>
+                    <span class="style-date">{{ $comment->created_at }}</span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    {!! $comment->content !!}
+                </div>
                 
             </div>
             @endforeach
