@@ -26,13 +26,13 @@ $(document).ready(function () {
         ['image']
       ];
       
-      var quill = new Quill('#editor', {
+    var quill = new Quill('#editor', {
         modules: {
-          toolbar: toolbarOptions
+            toolbar: toolbarOptions
         },
-      
+        
         theme: 'snow'
-      });
+    });
       
   $('#post-comment').on('click', function($e) {
     $e.preventDefault();

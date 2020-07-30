@@ -49,7 +49,7 @@ Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
 Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
 Route::post('/comment/addComment', 'CommentController@addComment')->name('comment.addComment');
 Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
-// Route::get('/profile/{name}', 'PostController@pagePost')->name('page.post');
+Route::get('/profile/{name}', 'ProfileController@showProfile')->name('profile.showProfile');
 
 Route::resources([
     'homes' => 'HomeController',

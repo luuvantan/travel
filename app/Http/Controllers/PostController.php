@@ -32,7 +32,7 @@ class PostController extends Controller
     public function pagePost(Request $request, $title, $post_id) 
     {
         $user_id = \Auth::id();
-        $post = Post::with('user:id,name,avatar')
+        $post = Post::with('user:id,name,avatar,email')
                 ->where('id', $post_id)->first();
         
         $news = Post::whereNotIn('id', [$post_id])->orderBy('created_at', 'DESC')->paginate(8);
@@ -42,7 +42,7 @@ class PostController extends Controller
         $sumVote = $votes->sum('vote');
         $average = ($countVote>0) ? round($sumVote/$countVote, 1) : 0;
         $userVote = (!empty($user_id) && $countVote >0) ? $votes->where('user_id', $user_id)->first()->vote : 0;
-        $comments = Comment::with('user:id,name,avatar')
+        $comments = Comment::with('user:id,name,avatar,email')
                     ->where('post_id', $post_id)
                     ->orderBy('created_at', 'DESC')->get();
  

@@ -9,7 +9,7 @@
             <div class="col-md-9">
                 <div class="show-post">
                     <div class="col-md-12 mt-2">
-                        <a href=''>
+                        <a href="{{ $post->user->link }}">
                             <img style="" class="owner-post-img" src="{{ $post->user->avatar }}">
                             {{ $post->user->name }}
                         </a>
@@ -123,7 +123,7 @@
             @foreach($comments as $key=>$comment)
             <div class="card mt-3 show-comment">
                 <div class="col-md-12 mt-2">
-                    <a href=''>
+                    <a href="{{ $comment->user->link }}">
                         <img style="width: 22px;height: 22px;border-radius: 50%;"
                              class="" src="{{ $comment->user->avatar }}">
                         {{ $comment->user->name }}
