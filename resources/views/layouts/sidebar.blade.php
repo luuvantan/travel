@@ -15,7 +15,7 @@
                                 Trang Chủ
                             </a>
                         </li>
-
+ 
                         <li class="nav-item dropdown">
                             <a class="nav-link items-menu" href="#">
                                 Du Lịch
@@ -56,17 +56,17 @@
                                 Liên Hệ
                             </a>
                         </li>
-                      <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
-                      <div class="search-menu hidden" id="searchForm" >
-                        <form class="navbar-form" role="search">
-                          <div class="input-group">
-                            <input type="text" class="form-control input-form" placeholder="Search" id="search-ajax" autocomplete="on">
-                            <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                          </span>
-                          </div>
-                        </form>
-                      </div>
+                        <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
+                        <div class="search-menu hidden" id="searchForm" >
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-form" placeholder="Search" id="search-ajax" autocomplete="on">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
 
                         @guest
                             <li class="nav-item">

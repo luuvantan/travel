@@ -41,14 +41,15 @@ class CrawlData extends Command
     public function handle()
     {
         $test = new Crawler();
-        $t = $test->Crawls("https://blogyeuphuot.com/chia-se-kinh-nghiem-du-lich-tay-nguyen-cuc-day-du-tu-a-z.html");
+        list($t, $img) = $test->Crawls("https://blogyeuphuot.com/kinh-nghiem-phuot-ta-xua-san-may-thoa-suc-check-in-song-ao.html");
         DB::table('posts')->insert([
             'user_id' => 1,
-            'name' => 'hihi',
-            'category_id' => 1,
-            'provincial_id' => 1,
-            'title' => 'aaa',
-            'content' => $t
+            'name' => 'Bãi Đông',
+            'category_id' => 4,
+            'provincial_id' => 26,
+            'title' => 'Kinh nghiệm du lịch Bãi Đông Thanh Hóa 2020',
+            'content' => $t,
+            'url_img' => $img
         ]);
     }
 }

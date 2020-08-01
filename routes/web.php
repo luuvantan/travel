@@ -33,15 +33,23 @@ Route::group(['middleware' => 'travel'], function () {
     });
 
 });
-
-Route::get('/experiences/food-and-drink', 'ExperienceController@foodAndDrink')->name('experiences.food-and-drink');
-Route::get('/experiences/travel-hand-book', 'ExperienceController@travelHandBook')->name('experiences.travel-hand-book');
-Route::get('/experiences/information', 'ExperienceController@information')->name('experiences.information');
+Route::group(['prefix'=>'experiences'], function() {
+    Route::get('/food-and-drink', 'ExperienceController@foodAndDrink')->name('experiences.food-and-drink');
+    Route::get('/travel-hand-book', 'ExperienceController@travelHandBook')->name('experiences.travel-hand-book');
+    Route::get('/information', 'ExperienceController@information')->name('experiences.information');
+});
+Route::group(['prefix'=>'travels'], function() {
+    Route::get('/northern', 'TravelController@northern')->name('travels.northern');
+    Route::get('/central', 'TravelController@central')->name('travels.central');
+    Route::get('/southern', 'TravelController@southern')->name('travels.southern');
+});
 Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
-Route::get('/travels/northern', 'TravelController@northern')->name('travels.northern');
-Route::get('/travels/central', 'TravelController@central')->name('travels.central');
-Route::get('/travels/southern', 'TravelController@southern')->name('travels.southern');
 Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
+Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
+Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
+Route::post('/comment/addComment', 'CommentController@addComment')->name('comment.addComment');
+Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
+Route::get('/profile/{name}', 'ProfileController@showProfile')->name('profile.showProfile');
 
 Route::resources([
     'homes' => 'HomeController',

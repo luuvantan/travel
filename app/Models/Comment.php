@@ -8,11 +8,11 @@ class Comment extends Model
 {
     public function post()
     {
-        return $this->hasOne('App\Models\Post', 'id', 'post_id');
+        return $this->belongsTo('App\Models\Post', 'post_id', 'id');
     }
 
     public function user()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 }

@@ -1,3 +1,7 @@
+
+main {
+    margin-top: 90px !important;
+}
 .color-red {
     color: red;
 }
@@ -22,6 +26,15 @@
     color: white;
 }
 
-.border-tittle {
+.border-title {
     border-left: 3px solid rgb(60, 152, 202);
+}
+
+.title {
+	background: #E4E4E4;
+	color: #444;
+}
+
+.pagination a {
+    height: 100%;
 }

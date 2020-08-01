@@ -1,3 +1,9 @@
+main {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-size: 1rem;
+    line-height: 1.625;
+}
+
 .content-post {
     width: 100%;
     height: 50vh !important;
@@ -18,11 +24,27 @@
 }
 
 .post-index {
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+    .show-post {
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+            display: flex;
+        }
 
+        .owner-post-img {
+            max-width: auto !important;
+            margin: none !important;
+            display: initial !important;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+        }
+    }
+    p {
+        text-align: justify;
+        font-size: 16px;
+    }
     fieldset,
     label {
         margin: 0;
@@ -45,7 +67,7 @@
     }
 
     .myratings {
-        font-size: 85px;
+        font-size: 75px;
         color: green
     }
 
@@ -55,7 +77,7 @@
 
     .rating>label:before {
         margin: 3px;
-        font-size: 1.8em;
+        font-size: 1.5em;
         font-family: FontAwesome;
         display: inline-block;
         content: "\f005"
@@ -71,17 +93,22 @@
         float: right
     }
 
-    .rating>[id^="star"]:checked~label,
-    .rating:not(:checked)>label:hover,
-    .rating:not(:checked)>label:hover~label {
-        color: #FFD700
+    .guestVote>[id^="star"]:checked~label,
+    .guestVote:not(:checked)>label:hover,
+    .guestVote:not(:checked)>label:hover~label {
+        color: #FFD700;
     }
 
-    .rating>[id^="star"]:checked+label:hover,
-    .rating>[id^="star"]:checked~label:hover,
-    .rating>label:hover~[id^="star"]:checked~label,
-    .rating>[id^="star"]:checked~label:hover~label {
-        color: #FFED85
+    .guestVote>[id^="star"]:checked+label:hover,
+    .guestVote>[id^="star"]:checked~label:hover,
+    .guestVote>label:hover~[id^="star"]:checked~label,
+    .guestVote>[id^="star"]:checked~label:hover~label {
+        color: #FFED85;
+    }
+
+
+    .userVote>[id^="star"]:checked~label {
+        color: #ff002d;
     }
 
     .reset-option {
@@ -102,6 +129,7 @@
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
+        margin-top: 0px;
     }
 
     .count-rate {
@@ -115,4 +143,45 @@
         cursor: not-allowed;
     }
 
+    #news-related, #news {
+        ul {
+            list-style: none;
+            padding: 0px !important;
+        }
+    }
+
+    .comment {
+        textarea {
+            border: 1px solid rgba(0,0,0,.1);
+            border-radius: 3px;
+            transition: border-color .1s ease-in;
+            min-height: 120px;
+        }
+    }
+
+    .content-post {
+        border: 1px solid rgba(0,0,0,.1);
+        border-radius: 3px;
+        transition: border-color .1s ease-in;
+        min-height: 60px !important;
+        height: auto !important;
+    }
+
+    .ql-toolbar {
+        border-bottom: 0px !important;
+    }
+
+    .style-date {
+        color: #9b9b9b!important;
+        font-size: 14px;
+        float: right;
+    }
+
+    .show-comment {
+        font-family: "Nunito", sans-serif !important;
+
+        a {
+            font-size: 16px;
+        }
+    }
 }
