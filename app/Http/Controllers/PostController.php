@@ -29,12 +29,12 @@ class PostController extends Controller
     }
 
     //pagePost
-    public function pagePost(Request $request, $title, $post_id) 
+    public function pagePost(Request $request, $title, $post_id)
     {
         $user_id = \Auth::id();
         $post = Post::with('user:id,name,avatar,email')
                 ->where('id', $post_id)->first();
-        
+
         $news = Post::whereNotIn('id', [$post_id])->orderBy('created_at', 'DESC')->paginate(8);
 
         $votes = Vote::where('post_id', $post_id)->get();
@@ -45,7 +45,7 @@ class PostController extends Controller
         $comments = Comment::with('user:id,name,avatar,email')
                     ->where('post_id', $post_id)
                     ->orderBy('created_at', 'DESC')->get();
- 
+
         return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote', 'comments'));
     }
 
@@ -77,13 +77,13 @@ class PostController extends Controller
         $post->category_id = $request['category_id'];
         $post->place = $request['place'];
         $post->content = $request['text'];
-        
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'public/'. $request['category_id']. '/' . $request['provincial_id'] . '/' . $name;
             \Storage::put($filePath, file_get_contents($image));
-     
+
             $post->url_img = \Storage::url($filePath);
         }
         $post->save();
@@ -131,9 +131,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $data = $request->only(['checkUser', 'post_id', 'name']);
+        if ($data['checkUser']) {
+            $post = Post::findOrFail($data['post_id']);
+            $post->delete();
+
+            return redirect()->route('profile.showProfile', ['name' => $data['name']])->with('thongbao', 'Xóa post thành công');
+        }
+        return abort('404');
+
     }
 
     /**
