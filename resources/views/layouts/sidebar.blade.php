@@ -5,7 +5,7 @@
                 <nav class="navbar navbar-expand-sm navbar-dark">
                 <!-- Brand/logo -->
                     <a class="navbar-brand" href="{{ route('homes.index') }}">
-                        <img src="/images/logo/travel4.png" alt="logo" style="width:auto;height:70px">
+                        <img src="/images/logo/travel5.png" alt="logo" style="width:auto;height:70px; padding:8px;">
                     </a>
 
                 <!-- Links -->
