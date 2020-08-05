@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function getLinkAttribute()
     {
-        return route('profile.showProfile', ['name' => \Str::slug($this->name)]);
+        return route('profile.showProfile', ['email' => $this->email]);
     }
 }

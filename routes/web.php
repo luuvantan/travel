@@ -30,6 +30,10 @@ Route::group(['middleware' => 'travel'], function () {
         // Comment
         Route::get('comment', 'admin\CommentController@index')->name('admin.comment.list');
         Route::delete('comment', 'admin\CommentController@destroy')->name('admin.comment.delete');
+
+        Route::resources([
+            'users' => 'admin\UserController',
+        ]);
     });
 
 });

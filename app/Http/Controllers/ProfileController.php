@@ -16,8 +16,8 @@ class ProfileController extends Controller
         if (empty($userSearch)) {
             return abort(404);
         }
-        $userCurrent = Auth::user();
-        $isCheckUser = $userSearch->id === $userCurrent->id;
+        $userCurrent = Auth::id() ?? 0;
+        $isCheckUser = $userSearch->id === $userCurrent;
         $postResult = Post::where('user_id', $userSearch->id);
         $posts = $postResult->paginate(config('travel.paginate'));
         $countPost = $postResult->get()->count();

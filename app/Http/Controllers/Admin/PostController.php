@@ -10,7 +10,9 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::with(['category'])->orderBy('status', 'asc')->paginate(config('travel.paginate'));
+        $posts = Post::with(['category'])
+            ->orderBy('status', 'asc')
+            ->paginate(config('travel.paginate'));
 
         return view('admin.post.index', compact('posts'));
     }

@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-
+<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 @section('title')
   Post
 @endsection
@@ -31,13 +31,11 @@
             <thead>
             <tr>
               <th class="text-center">STT</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Category</th>
-              <th class="text-center">Place</th>
-              <th class="text-center">Title</th>
-              <th class="text-center">Content</th>
-              <th class="text-center">Images</th>
-              <th class="text-center">Chỉnh Sửa</th>
+              <th class="text-center">Tên bài viết</th>
+              <th class="text-center">Thể Loại</th>
+              <th class="text-center">Địa Điểm</th>
+              <th class="text-center">Tiêu đề</th>
+              <th class="text-center" style="width:35%;">Chỉnh Sửa</th>
             </tr>
             </thead>
             <tbody>
@@ -48,20 +46,18 @@
                 <td class="text-center">{{ $item->category->name ?? '' }}</td>
                 <td class="text-center">{{ $item->place }}</td>
                 <td class="text-center">{{ $item->title }}</td>
-                <td class="text-center">{{ $item->content }}</td>
-                <td class="text-center"><img src="{{ $item->url_img }}" alt="Load image fail"></td>
                 <td class="text-center">
                   @if ($item->status == 0)
-                    <a href="admin/post/change-status/{{$item->id}}" class="btn btn-warning">Duyệt Bài</a>
+                    <a href="admin/post/change-status/{{$item->id}}" class="btn btn-warning w-140">Duyệt Bài</a>
                   @elseif ($item->status == 1)
-                    <a href="admin/post/change-status/{{$item->id}}" class="btn btn-success">Bỏ Duyệt Bài</a>
+                    <a href="admin/post/change-status/{{$item->id}}" class="btn btn-success w-140">Bỏ Duyệt Bài</a>
                   @endif
-                  <a href="{{ route('admin.comment.list', ['postId' => $item->id]) }}" class="btn btn-info">Xem Comment</a>
-                  <a href="" class="btn btn-primary">Chỉnh Sửa</a>
+                  <a href="{{ route('admin.comment.list', ['postId' => $item->id]) }}" class="btn btn-info w-140">Xem Comment</a>
+                  <a href="" class="btn btn-primary w-140">Chỉnh Sửa</a>
                   <form action="{{ route('admin.post.delete', ['id' => $item->id]) }}" method="post" style="display: inline">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger"
+                    <button class="btn btn-danger w-140"
                       onclick="return window.confirm('Bạn có chắc chắn muốn xóa ?')">Xóa Comment</button>
                   </form>
                 </td>

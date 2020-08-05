@@ -24,36 +24,29 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('admin.post.list') }}" >
             <i class="fa fa-address-card"></i>
-            <span>Bài Viết</span>
+            <span>Danh sách bài Viết</span>
         </a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="admin/user/list">
+        <a class="nav-link collapsed" href="{{ route('users.index') }}">
             <i class="fa fa-user-circle"></i>
             <span>Danh sách người dùng</span>
         </a>
     </li>
  <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Quản lí</span>
+            <span>Quản lí report</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="admin/roomtype/list">Loại phòng</a>
-                <a class="collapse-item" href="admin/roomservice/list">Dịch vụ phòng</a>
-            </div>
-        </div>
     </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
