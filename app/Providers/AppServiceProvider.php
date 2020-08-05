@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Post;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $highlights = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->limit(12)->get();
+        view()->share('highlights', $highlights);
     }
 }

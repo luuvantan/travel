@@ -78,16 +78,16 @@
         <div class="col-3 float-right" style="padding-left: 15px">
             <div class="title p-2 d-flex justify-content-center color-red" style="border-left: 3px solid #3c98ca;">TIN TỨC MỚI</div>
             @foreach($news as $new)
-            <div class="wrap-img-text mt-4 mb-2 col-md-12">
+            <div class="wrap-img-text mt-4 mb-2 col-md-12 postNews">
                 <div class="">
-                    <img src="{{ $new->url_img }}" alt="" style="max-width: 74px;" class="float-left hover-img mt-2">
+                    <img src="{{ $new->url_img }}" alt="" style="max-width: 74px;" class="float-left hover-img mt-1">
                 </div>
                 <div class="text">
                     <a href="{{ $new->link }}" class="color-green">{{ $new->provincial->name }}</a>
                     <p class="text-title"><b>{{ substr($new->title, 0, 60) }}</b></p>
                 </div>
-                <hr>
             </div>
+            <hr>
             @endforeach
         </div>
     </div>

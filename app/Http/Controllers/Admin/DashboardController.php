@@ -24,6 +24,6 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        return view("admin.test");
+        return view("admin.dashboard");
     }
 }

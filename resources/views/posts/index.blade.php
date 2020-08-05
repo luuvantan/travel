@@ -125,7 +125,7 @@
                 <div class="col-md-12 mt-2">
                     <a href="{{ $comment->user->link }}">
                         <img style="width: 22px;height: 22px;border-radius: 50%;"
-                             class="" src="{{ $comment->user->avatar }}">
+                            class="" src="{{ $comment->user->avatar }}">
                         {{ $comment->user->name }}
                     </a>
                     <span class="style-date">{{ $comment->created_at }}</span>

@@ -32,3 +32,10 @@ https://blogyeuphuot.com/
 
 //
 border-bottom: 1px dashed #ccc;
+
+// logo
+https://www4.flamingtext.com/Free-Logo-Designs/page6
+
+//admin
+https://startbootstrap.com/previews/sb-admin-2/
+https://adminlte.io/themes/v3/index.html

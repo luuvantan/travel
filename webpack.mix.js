@@ -19,12 +19,14 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/experiences/index.js', 'public/js/experiences')
     .js('resources/js/travels/index.js', 'public/js/travels')
     .js('resources/js/profiles/index.js', 'public/js/profiles')
+    .js('resources/js/admin.js', 'public/js/admin')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/overview.scss', 'public/css')
     .sass('resources/sass/post.scss', 'public/css')
     .sass('resources/sass/experience.scss', 'public/css')
     .sass('resources/sass/profile.scss', 'public/css')
-    .sass('resources/sass/travel.scss', 'public/css');
+    .sass('resources/sass/travel.scss', 'public/css')
+    .sass('resources/sass/admin.scss', 'public/css');
 
 mix.copyDirectory('resources/images/image', 'public/images/image')
     .copyDirectory('resources/images/logo', 'public/images/logo');
