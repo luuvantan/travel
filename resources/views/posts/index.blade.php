@@ -37,7 +37,7 @@
                         <li class="pb-3">
                             <a href="{{ $new->link }}">
                                 <i class="fa fa-pencil pr-3" aria-hidden="true"></i>
-                                {{ substr($new->title, 0, 60) }} ...
+                                {{ mb_substr($new->title, 0, 60, 'UTF-8') }} ...
                             </a>
                         </li>
                         @endforeach
@@ -53,7 +53,7 @@
                         <li class="pb-3">
                             <a href="{{ $new->link }}">
                                 <i class="fa fa-pencil pr-3" aria-hidden="true"></i>
-                                {{ substr($new->title, 0, 60) }} ...
+                                {{ mb_substr($new->title, 0, 60, 'UTF-8') }} ...
                             </a>
                         </li>
                         @endforeach

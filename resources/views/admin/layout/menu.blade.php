@@ -64,10 +64,10 @@
         </a>
     </li>
 <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="admin/logout" >
             <i class="fa fa-home"></i>
             <span>Đăng xuất</span>
         </a>
-    </li>
+    </li> -->
 </ul>
