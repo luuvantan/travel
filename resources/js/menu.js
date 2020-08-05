@@ -36,7 +36,7 @@ $(document).ready(function () {
       source: engine.ttAdapter(),
       name: 'post',
       display: function(data) {
-        return data.name;
+        return data.title;
       },
       templates: {
         empty: [
@@ -46,7 +46,7 @@ $(document).ready(function () {
           '<div class="list-group search-results-dropdown list-show"></div>'
         ],
         suggestion: function (data) {
-          return '<a href="/post/' + data.id + '" class="list-group-item list-show">' + data.name + '</a>';
+          return '<a href="/post/' + data.title + '.' + data.id + '" class="list-group-item list-show">' + data.title + '</a>';
         }
       }
     }]

@@ -13,17 +13,22 @@
             <img src="{{ asset($userSearch->avatar ? $userSearch->avatar : 'images/image/no-image.png') }}"
                  alt="no-images" class="avatar" style="width: 80px;height: 80px; border-radius: 50%">
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1" style="min-width: 150px">
             <div class="edit-profile">
                 <div class="name">
                     <h4>{{ $userSearch->name }}</h4>
                 </div>
-                @if ($isCheckUser)
-                    <button class="btn btn-sm btn-outline-primary is-edit">
-                        Edit
-                    </button>
-                @endif
+                <div>
+                  <p> Posts: {{ $countPost }}</p>
+                </div>
             </div>
+        </div>
+        <div class="col-md-2">
+          @if ($isCheckUser)
+            <button class="btn btn-sm btn-outline-primary is-edit">
+              Edit
+            </button>
+          @endif
         </div>
     </div>
     <div class="row mt-5">

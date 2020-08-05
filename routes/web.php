@@ -49,7 +49,7 @@ Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
 Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
 Route::post('/comment/addComment', 'CommentController@addComment')->name('comment.addComment');
 Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
-Route::get('/profile/{name}', 'ProfileController@showProfile')->name('profile.showProfile');
+Route::get('/profile/{email}', 'ProfileController@showProfile')->name('profile.showProfile');
 Route::delete('post', 'PostController@destroy')->name('post.delete');
 
 Route::resources([
