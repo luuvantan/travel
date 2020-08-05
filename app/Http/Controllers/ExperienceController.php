@@ -31,7 +31,9 @@ class ExperienceController extends Controller
             $datas = Post::with('user:id,name,avatar')->where('category_id', 1)
                     ->paginate(5);
         } else {
-            $datas =Post::with('user:id,name,avatar')->where('category_id', 1)
+            $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+            $datas = Post::with('user:id,name,avatar')->where('category_id', 1)
+                    ->where('provincial_id', $provincialId['id'])
                     ->paginate(5);
         }
         
@@ -45,12 +47,12 @@ class ExperienceController extends Controller
         $title = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
-        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         
         if(empty($provincialId)) {
             $datas = Post::with('user:id,name,avatar')->where('category_id', 4)
                     ->paginate(5);
         } else {
+            $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
             $datas = Post::with('user:id,name,avatar')->where('category_id', 4)
                     ->where('provincial_id', $provincialId['id'])
                     ->paginate(5);

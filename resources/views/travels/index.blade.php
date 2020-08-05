@@ -37,7 +37,7 @@
                             </div>
                             <div class="frame-bot">
                                 <div class="des-content dot-dot cut-content" style="overflow-wrap: break-word;">
-                                    {!! substr(strip_tags($data->content), 0, 150) !!}
+                                    {!! mb_substr(strip_tags($data->content), 0, 150, 'UTF-8') !!}
                                 </div>
                                 <div class="text-right">
                                     <a href="" class="color-red">Xem thêm &nbsp;

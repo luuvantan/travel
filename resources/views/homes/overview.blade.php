@@ -26,7 +26,7 @@
                             <img class="card-img-top" src="{{ $suggest->url_img }}" alt="Card image">
                             <div class="card-img-overlay div-text">
                                 <h4 class="card-text">Du Lịch {{ $suggest->provincial->name }}</h4>
-                                <p class="card-text">{{ substr($suggest->title, 0, 60) }}</p>
+                                <p class="card-text">{{ mb_substr($suggest->title, 0, 60, 'UTF-8') }}</p>
                             </div>
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                         <img src="{{ $highlight->url_img }}" class="img-fluid card-img-top" alt="Responsive image">
                         <div class="card-body">
                             <h4 class="card-title">{{ $highlight->user->name }}</h4>
-                            <p class="card-text">{{ substr($highlight->title, 0, 100) }}</p>
+                            <p class="card-text">{{ mb_substr($highlight->title, 0, 100, 'UTF-8') }}</p>
                             <a href="{{ $highlight->link }}" class="stretched-link">Chi Tiết >></a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="text">
                     <a href="{{ $new->link }}" class="color-green">{{ $new->provincial->name }}</a>
-                    <p class="text-title"><b>{{ substr($new->title, 0, 60) }}</b></p>
+                    <p class="text-title"><b>{{ mb_substr($new->title, 0, 60, 'UTF-8') }}</b></p>
                 </div>
             </div>
             <hr>
