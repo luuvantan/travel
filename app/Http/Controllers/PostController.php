@@ -157,7 +157,8 @@ class PostController extends Controller
         $searchs = Post::where(function ($query) use ($param) {
             return $query->where('name', 'like', '%' . $param['value'] . '%')
                 ->orWhere('title', 'like', '%' . $param['value'] . '%')
-                ->orWhere('content', 'like', '%' . $param['value'] . '%');
+                ->orWhere('content', 'like', '%' . $param['value'] . '%')
+                ->orWhere('title', 'like', '%' . $param['value'] . '%');
         })->get();
 
         return response()->json($searchs);

@@ -10,17 +10,19 @@ use App\Models\User;
 class ProfileController extends Controller
 {
     //show profile
-    public function showProfile($name)
+    public function showProfile($email)
     {
-        $userSearch = User::where('name', $name)->first();
+        $userSearch = User::where('email', $email)->first();
         if (empty($userSearch)) {
             return abort(404);
         }
         $userCurrent = Auth::user();
         $isCheckUser = $userSearch->id === $userCurrent->id;
-        $posts = Post::where('user_id', $userSearch->id)->paginate(config('travel.paginate'));
+        $postResult = Post::where('user_id', $userSearch->id);
+        $posts = $postResult->paginate(config('travel.paginate'));
+        $countPost = $postResult->get()->count();
 
-        return view('profiles.showProfile', compact('userSearch', 'posts', 'isCheckUser'));
+        return view('profiles.showProfile', compact('userSearch', 'posts', 'isCheckUser', 'countPost'));
     }
 
     // manager profile
