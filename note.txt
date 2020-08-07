@@ -39,3 +39,14 @@ https://www4.flamingtext.com/Free-Logo-Designs/page6
 //admin
 https://startbootstrap.com/previews/sb-admin-2/
 https://adminlte.io/themes/v3/index.html
+
+// tu paginate
+    $perPage = !empty($request->per) ? $request->per : config('tds.page10');
+        $base_url = env('APP_URL') . '/';
+        $pageStart = request('page', 1);
+        $offSet    = ($pageStart * $perPage) - $perPage;
+        $itemsForCurrentPage =array_slice($data, $offSet, $perPage, true);
+        $paginator = new Paginator($itemsForCurrentPage, count($data), $perPage);
+        $paginator->setPath($base_url . 'orders/');
+
+        return $paginator;
