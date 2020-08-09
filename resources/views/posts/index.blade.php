@@ -9,7 +9,7 @@
             <div class="col-md-9">
                 <div class="show-post">
                     <div class="col-md-12 mt-2">
-                        <a href="{{ $post->user->link }}">
+                        <a class="customSize" href="{{ $post->user->link }}">
                             <img style="" class="owner-post-img" src="{{ $post->user->avatar }}">
                             {{ $post->user->name }}
                         </a>
@@ -67,8 +67,9 @@
                 <div class="col-12 form-group" id="vote"  data-url="{{ route('vote.addVote') }}">
                     <p class="count-rate">{{ $average }}/5 ({{ $countVote }} votes)</p>
                     <?php
-                        $temp = !empty($userVote) ? $userVote : $average;
+                        $temp = !empty($userVote) ? $userVote->vote : $average;
                         $rate = round($temp*2);
+                        
                     ?>
                     <fieldset class="rating {{ !empty($userVote) ? 'userVote disabled' : 'guestVote'}} {{ \Auth::check() ? '' : 'disabled' }}">
                         <input type="radio" id="star5" name="rating" value="5" {{ ($rate == 10) ? 'checked' : ''}}/><label class="full" for="star5" title="Awesome - 5 stars"></label>
@@ -123,7 +124,7 @@
             @foreach($comments as $key=>$comment)
             <div class="card mt-3 show-comment">
                 <div class="col-md-12 mt-2">
-                    <a href="{{ $comment->user->link }}">
+                    <a class="customSize" href="{{ $comment->user->link }}">
                         <img style="width: 22px;height: 22px;border-radius: 50%;"
                             class="" src="{{ $comment->user->avatar }}">
                         {{ $comment->user->name }}

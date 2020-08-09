@@ -78,6 +78,23 @@
                                 </li>
                             @endif
                         @else
+
+                            <li class="nav-item dropdown">
+                                <a style="margin-top: 4px;" class="nav-link items-menu" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-bell"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter">3+</span>
+                                </a>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">
+                                    Alerts Center
+                                    </h6>
+                                </div>
+                            </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                     style="padding-top: 6.5px !important;" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,6 +104,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ Auth::user()->link }}">
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

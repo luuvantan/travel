@@ -26,20 +26,16 @@ class TravelController extends Controller
         $title = "Du Lịch >> Miền Bắc >> Địa điểm";
         $provincials = Provincial::where('region_id', 1)->orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
-        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 1)
-                    ->paginate(1);
+            $datas = Post::with(['Provincial' => function ($query) {
+                        $query->where('region_id', 1);
+                    }])->paginate(10);
+            // ->where('category_id', 3)     
         } else {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 1)
-                    ->where('provincial_id', $provincialId)
-                    ->paginate(1);
+            $datas = Post::where('provincial_id', $provincialId)->paginate(10);
         }
-        
+
         return view('travels.index', \compact('title', 'provincials', 'datas'));
     }
 
@@ -49,18 +45,15 @@ class TravelController extends Controller
         $title = "Du Lịch >> Miền Trung >> Địa điểm";
         $provincials = Provincial::where('region_id', 2)->orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
-        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 2)
-                    ->paginate(1);
+            $datas = Post::with(['Provincial' => function ($query) {
+                        $query->where('region_id', 2);
+                    }])->paginate(10);
         } else {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 2)
-                    ->where('provincial_id', $provincialId)
-                    ->paginate(1);
+            $datas = $datas = Post::with(['Provincial' => function ($query) {
+                        $query->where('region_id', 2);
+                    }])->where('provincial_id', $provincialId)->paginate(10);
         }
         
         return view('travels.index', \compact('title', 'provincials', 'datas'));
@@ -72,18 +65,15 @@ class TravelController extends Controller
         $title = "Du Lịch >> Miền Nam >> Địa điểm";
         $provincials = Provincial::where('region_id', 3)->orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
-        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 3)
-                    ->paginate(1);
+            $datas = Post::with(['Provincial' => function ($query) {
+                        $query->where('region_id', 3);
+                    }])->paginate(10);
         } else {
-            $datas = DB::table('posts')
-                    ->where('category_id', 3)
-                    // ->where('region_id', 3)
-                    ->where('provincial_id', $provincialId)
-                    ->paginate(1);
+            $datas = $datas = Post::with(['Provincial' => function ($query) {
+                        $query->where('region_id', 3);
+                    }])->where('provincial_id', $provincialId)->paginate(10);
         }
         
         return view('travels.index', \compact('title', 'provincials', 'datas'));

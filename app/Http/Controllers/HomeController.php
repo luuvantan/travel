@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Post;
 use App\Models\Provincial;
 use App\Models\Category;
@@ -30,10 +33,31 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $news = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->paginate(8);
-        $suggests = Post::with('user:id,name,avatar')->with(['comment'])->get()->sortByDesc('countComment');
-        $highlights = Post::with('user:id,name,avatar')->with(['vote'])->get()->sortByDesc('sumVote');
+        $title = "Trang chủ";
+        $news = Post::with('user:id,name,avatar,email')
+            ->orderBy('created_at', 'DESC')
+            ->take(8)->get();
 
-        return view("homes.overview", \compact('news', 'suggests', 'highlights'));
+        $suggests = Post::with('user:id,name,avatar,email')
+            ->with(['comment'])->get()
+            ->sortByDesc('countComment')->take(8);
+
+        $dataHighlights = Post::with('user:id,name,avatar,email')
+            ->with(['vote'])->get()
+            ->sortByDesc('sumVote');
+
+        $highlights = $this->customPaginate($dataHighlights);
+
+        return view("homes.overview", \compact('title', 'news', 'suggests', 'highlights'));
+    }
+
+    public function customPaginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $base_url = env('APP_URL') . '/';
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        $highlights = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+        
+        return $highlights->setPath($base_url . 'homes/');
     }
 }

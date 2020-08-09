@@ -27,17 +27,17 @@
                         <div class="frame-news">
                             <div class="frame-top">
                                 <h2 class="news-title-l">
-                                    <a href="#"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
+                                    <a href="{{ $data->link }}"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
                                 </h2>
-                                <div class="frame-date">
-                                    <div class="f-left"><img src="" alt="date"></div>
-                                    <div class="f-left date">{{ $data->created_at }}</div>
-                                    <div class="clear"></div>
+                                <div class="frame-date pb-1" style="">
+                                    <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ $data->user->avatar }}" alt="date">
+                                    <a class="customSize" href="{{ $data->user->link }}">{{ $data->user->name }}</a> / {{ $data->created_at }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="frame-bot">
                                 <div class="des-content dot-dot cut-content" style="overflow-wrap: break-word;">
-                                    {!! mb_substr(strip_tags($data->content), 0, 150, 'UTF-8') !!}
+                                    {!! mb_substr(strip_tags($data->content), 0, 180, 'UTF-8') !!}...
                                 </div>
                                 <div class="text-right">
                                     <a href="" class="color-red">Xem thêm &nbsp;
@@ -51,7 +51,13 @@
             </div>
             @endforeach
         </div>
-        {{ $datas->links() }}
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-6">
+                {{ $datas->links("pagination") }}
+            </div>
+	    </div>
     </section>
 </div>
 @endsection

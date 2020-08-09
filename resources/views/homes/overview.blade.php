@@ -64,13 +64,26 @@
                     <div class="card">
                         <img src="{{ $highlight->url_img }}" class="img-fluid card-img-top" alt="Responsive image">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $highlight->user->name }}</h4>
-                            <p class="card-text">{{ mb_substr($highlight->title, 0, 100, 'UTF-8') }}</p>
+                            <div style="margin-bottom: 1rem;" class="">
+                                <a class="customSize" href="{{ $highlight->user->link }}">
+                                    <img style="width: 22px;height: 22px;border-radius: 50%;"
+                                        class="" src="{{ $highlight->user->avatar }}">
+                                    {{ $highlight->user->name }}
+                                </a>
+                            </div>
+                            <p class="customSize card-text">{{ mb_substr($highlight->title, 0, 100, 'UTF-8') }}...</p>
                             <a href="{{ $highlight->link }}" class="stretched-link">Chi Tiết >></a>
                         </div>
                     </div>
                 </div>
                 @endforeach
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-6">
+                    {{ $highlights->links("pagination") }}
+                </div>
             </div>
         </div>
 

@@ -28,13 +28,12 @@ class ExperienceController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with('user:id,name,avatar')->where('category_id', 1)
-                    ->paginate(5);
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 1)
+                    ->paginate(10);
         } else {
-            $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
-            $datas = Post::with('user:id,name,avatar')->where('category_id', 1)
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 1)
                     ->where('provincial_id', $provincialId['id'])
-                    ->paginate(5);
+                    ->paginate(10);
         }
         
 
@@ -47,13 +46,12 @@ class ExperienceController extends Controller
         $title = "Kinh nghiệm >> Cẩm nang du lịch >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
         $filterProvincial = $request->provincial ?? '';
-        
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with('user:id,name,avatar')->where('category_id', 4)
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 4)
                     ->paginate(5);
         } else {
-            $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
-            $datas = Post::with('user:id,name,avatar')->where('category_id', 4)
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 4)
                     ->where('provincial_id', $provincialId['id'])
                     ->paginate(5);
         }
@@ -65,7 +63,16 @@ class ExperienceController extends Controller
     {
         $title = "Kinh nghiệm >> Thông Tin Cần Biết >> Địa điểm";
         $provincials = Provincial::orderBy('name')->get();
-        $datas = Post::where('user_id', 1)->paginate(5);
+        $filterProvincial = $request->provincial ?? '';
+        $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
+        if(empty($provincialId)) {
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 2)
+                    ->paginate(5);
+        } else {
+            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 2)
+                    ->where('provincial_id', $provincialId['id'])
+                    ->paginate(5);
+        }
         
         return view('experiences.index', \compact('title', 'provincials', 'datas'));
     }

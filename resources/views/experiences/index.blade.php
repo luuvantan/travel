@@ -32,13 +32,13 @@
                                     </h2>
                                     <div class="frame-date pb-1" style="">
                                         <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ $data->user->avatar }}" alt="date">
-                                        {{ $data->user->name }} / {{ $data->created_at }}
+                                        <a class="customSize" href="{{ $data->user->link }}">{{ $data->user->name }}</a> / {{ $data->created_at }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="frame-bot">
                                     <div class="des-content dot-dot cut-content" style="overflow-wrap: break-word;">
-                                        {!! mb_substr(strip_tags($data->content), 0, 150, 'UTF-8') !!}
+                                        {!! mb_substr(strip_tags($data->content), 0, 180, 'UTF-8') !!}...
                                     </div>
                                     <div class="text-right">
                                         <a href="{{ $data->link }}" class="color-red">Xem thêm &nbsp;
