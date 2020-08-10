@@ -37,11 +37,11 @@ class PostController extends Controller
 
         $news = Post::whereNotIn('id', [$post_id])->orderBy('created_at', 'DESC')->paginate(8);
 
-        $votes = Vote::where('post_id', $post_id)->get();
-        $countVote = $votes->count('id');
-        $sumVote = $votes->sum('vote');
+        $votes = Vote::where('post_id', $post_id);
+        $countVote = $votes->get()->count('id');
+        $sumVote = $votes->get()->sum('vote');
         $average = ($countVote>0) ? round($sumVote/$countVote, 1) : 0;
-        $userVote = (!empty($user_id) && $countVote >0) ? $votes->where('user_id', $user_id)->first()->vote : 0;
+        $userVote = (!empty($user_id) && $countVote >0) ? $votes->where('user_id', $user_id)->select('vote')->first() : 0;
         $comments = Comment::with('user:id,name,avatar,email')
                     ->where('post_id', $post_id)
                     ->orderBy('created_at', 'DESC')->get();

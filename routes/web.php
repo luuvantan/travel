@@ -30,6 +30,10 @@ Route::group(['middleware' => 'travel'], function () {
         // Comment
         Route::get('comment', 'admin\CommentController@index')->name('admin.comment.list');
         Route::delete('comment', 'admin\CommentController@destroy')->name('admin.comment.delete');
+
+        Route::resources([
+            'users' => 'admin\UserController',
+        ]);
     });
 
 });
@@ -51,6 +55,8 @@ Route::post('/comment/addComment', 'CommentController@addComment')->name('commen
 Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
 Route::get('/profile/{email}', 'ProfileController@showProfile')->name('profile.showProfile');
 Route::delete('post', 'PostController@destroy')->name('post.delete');
+Route::get('notification', 'SendNotificationController@create')->name('notification.create');
+Route::post('notification', 'SendNotificationController@store')->name('notification.store');
 
 Route::resources([
     'homes' => 'HomeController',

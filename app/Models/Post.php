@@ -40,4 +40,24 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\Provincial');
     }
+
+    public function vote()
+    {
+        return $this->hasMany('App\Models\Vote');
+    }
+
+    public function getSumVoteAttribute()
+    {
+        return optional($this->vote)->sum('vote');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function getCountCommentAttribute()
+    {
+        return optional($this->Comment)->Count('id');
+    }
 }

@@ -113,7 +113,7 @@
         border: 0px;
     }
     .input-group-btn {
-        background: red;
+        background: #f8f5f5;
     }
     .twitter-typeahead {
         width: 92%;
@@ -131,6 +131,26 @@
     }
     .btn.btn-default {
         height: 100%;
+    }
+
+    .topbar-divider {
+        width: 0;
+        border-right: 1px solid #e3e6f0;
+        height: calc(4.375rem - 2rem);
+    }
+
+    .badge-counter {
+        position: absolute;
+        -webkit-transform: scale(.7);
+        transform: scale(.7);
+        -webkit-transform-origin: top right;
+        transform-origin: top right;
+        right: .25rem;
+        margin-top: -.25rem;
+    }
+
+    .dropdown-item:hover {
+        color: red;
     }
 
 }

@@ -32,13 +32,14 @@
         </div>
     </div>
     <div class="row mt-5">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-2">
             <table class="table">
                 <tbody>
                 @if (!$posts->isEmpty())
-                    @foreach($posts as $post)
+                    @foreach($posts as $key => $post)
                     <tr>
-                        <td><a href="{{ $post->link }}">{{ $post->name }}</a></td>
+                        <td>{{ $key+1 }}</td>
+                        <td><a href="{{ $post->link }}">{{ mb_substr($post->title, 0, 70, 'utf-8') }}...</a></td>
                         @if ($isCheckUser)
                             <td>
                                 <form action="{{ route('post.delete', ['post_id' => $post->id, 'checkUser' => $isCheckUser, 'name' => $userSearch->name]) }}"
