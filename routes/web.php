@@ -55,6 +55,8 @@ Route::post('/comment/addComment', 'CommentController@addComment')->name('commen
 Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
 Route::get('/profile/{email}', 'ProfileController@showProfile')->name('profile.showProfile');
 Route::delete('post', 'PostController@destroy')->name('post.delete');
+Route::get('notification', 'SendNotificationController@create')->name('notification.create');
+Route::post('notification', 'SendNotificationController@store')->name('notification.store');
 
 Route::resources([
     'homes' => 'HomeController',
