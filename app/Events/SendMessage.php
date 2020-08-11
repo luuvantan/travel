@@ -3,20 +3,17 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-class NotificationEvent implements ShouldBroadcast
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class SendMessage
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
+
     public $title;
 
     public $message;
@@ -27,7 +24,6 @@ class NotificationEvent implements ShouldBroadcast
      */
     public function __construct($data)
     {
-        Log::info('lisa');
         $this->title = $data['title'];
         $this->message  = $data['content'];
     }
@@ -35,7 +31,7 @@ class NotificationEvent implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return Channel|array
+     * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
