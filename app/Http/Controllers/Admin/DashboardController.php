@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Category;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -29,51 +31,32 @@ class DashboardController extends Controller
         $totalUsers = User::get()->count('id');
         $totalPosts = Post::get()->count('id');
         $pendingPosts = Post::where('status', 0)->get()->count('id');
+        $postByDate = $this->postByDate();
+        $postByCategory = $this->postByCategory();
 
-        return view("admin.dashboard", compact('totalUsers', 'totalPosts', 'pendingPosts'));
+        return view("admin.dashboard", compact('totalUsers', 'totalPosts', 'pendingPosts', 'postByDate', 'postByCategory'));
     }
 
-    public function orderByYear()
-    {
-        $range = \Carbon\Carbon::now()->subYears(5);
-        $orderYear = DB::table('orders')
-                    ->select(DB::raw('year(date_order) as getYear'), DB::raw('COUNT(*) as value'))
-                    ->where('date_order', '>=', $range)
-                    ->groupBy('getYear')
-                    ->orderBy('getYear', 'ASC')
-                    ->get();
-
-        return view('fdfadmin.chart.get_year', compact('orderYear'));
-    }
-// function orderByYear() mình sẽ lấy tổng các order trong vòng 5 năm tính từ năm hiện tại và fill vào **bar chart**
-
-    public function postByDay()
+    public function postByDate()
     {
         $range = \Carbon\Carbon::now();
         $get_range = date_format($range,"Y/m/d");
         $date_range = date_format($range,"d/m/Y");
-        $sumProductDay = Post::where('created_at', '=', $get_range)
-                    ->groupBy('date_order')
-                    ->first();
-        if ($sumProductDay == null)
-        {
-
-            return redirect(route('chartYear'))->with('alert',trans('chart.no_order'));
-        } else {
-
-        $totalProduct = (INT)($sumProductDay->countProduct);
-        $percentProduct = round((100 / $totalProduct), 3);
-
-        $productBuy = DB::table('orders')
-                    ->select('products.name as name', DB::raw("SUM(amount) * $percentProduct as y"))
-                    ->join('detail_orders', 'orders.id', '=', 'detail_orders.order_id')
-                    ->join('products', 'detail_orders.product_id', '=', 'products.id')
-                    ->where('date_order', '=', $get_range)                    
-                    ->groupBy('product_id')
+        $postByDate = Post::select(DB::raw('date(created_at) as getDate'), DB::raw('COUNT(*) as value'))
+                    ->where('created_at', '>=', $date_range)
+                    ->groupBy('getDate')
+                    ->orderBy('getDate', 'ASC')
                     ->get();
 
-        return view('fdfadmin.chart.view_order', compact('productBuy', 'date_range'));
+        return $postByDate;
+    }
 
-        }            
+    public function postByCategory()
+    {
+        $postByDate = Post::with('category:id,name')->select(DB::raw('(category_id) as getCategory'), DB::raw('COUNT(*) as value'), 'category_id')
+                    ->groupBy('getCategory')
+                    ->get();
+        // dd($postByDate);            
+        return $postByDate;
     }
 }
