@@ -50,3 +50,6 @@ https://adminlte.io/themes/v3/index.html
         $paginator->setPath($base_url . 'orders/');
 
         return $paginator;
+
+// sử dụng Pusher và database notification để  thông báo
+https://dashboard.pusher.com/apps/1052523

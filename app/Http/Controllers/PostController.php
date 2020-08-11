@@ -88,7 +88,7 @@ class PostController extends Controller
         }
         $post->save();
 
-        return back()->with('success','success');
+        return redirect()->route('page.post', ['title' => \Str::slug($post->title), 'id' => $post->id])->with('alert-success', 'create success');
     }
 
     /**
