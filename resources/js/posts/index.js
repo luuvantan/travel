@@ -37,7 +37,6 @@ $(document).ready(function () {
     $('#post-comment').on('click', function($e) {
         $e.preventDefault();
         let comment = JSON.stringify(quill.root.innerHTML);
-        // console.log(quill.root.innerHTML);
         $.ajax({
             type: "POST",
             url : url_comment,
@@ -76,5 +75,14 @@ $(document).ready(function () {
                 alert("Lưu bình luận không thành công");
             }       
         });
+    });
+
+    $('.cursor-pointer').click(function() {
+        let t = $(this).attr('id');
+        $(`#responseComment${t}`).show();
+    })
+    
+    $('.cancel-submit').click(function(){
+        $(this).parent().parent().hide();
     });
 });

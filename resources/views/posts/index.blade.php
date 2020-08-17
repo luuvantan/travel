@@ -135,7 +135,7 @@
                         {!! $comment->content !!}
                     </div>
                     <div class="col-12 reply-comment">
-                        <a class="mr-05 cursor-pointer">Phản hồi</a>
+                        <a id="{{$key}}" class="mr-05 cursor-pointer">Phản hồi</a>
                     </div>
                     
                     @foreach($comment->response_comment as $response_comment)
@@ -155,8 +155,9 @@
                         </div>
                     </div>
                     @endforeach
-                    
-                    <div class="" id="responseComment" data-url="{{ route('comment.addResponseComment') }}">
+
+                    @if(\Auth::check())
+                    <div class="responseComment" id="responseComment{{$key}}" data-url="{{ route('comment.addResponseComment') }}" style="display: none;">
                         <div class="row" style="padding:20px;">
                             <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
                             <form style="width: calc(100% - 50px)" action="" class="response-comment">
@@ -168,8 +169,10 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary mr-2 mt-5" id="post-response-comment" style="float:right;" type="submit">Lưu Phản hồi</button>
+                            <button class="btn btn-secondary mr-2 mt-5 cancel-submit" style="float:right;" >Hủy Phản hồi</button>
                         </div>               
                     </div>
+                    @endif
                 </div>
                 @endforeach
             </div>
