@@ -33,27 +33,48 @@ $(document).ready(function () {
         
         theme: 'snow'
     });
-      
-  $('#post-comment').on('click', function($e) {
-    $e.preventDefault();
-    let comment = JSON.stringify(quill.root.innerHTML);
-    // console.log(quill.root.innerHTML);
-    $.ajax({
-      type: "POST",
-      url : url_comment,
-      data: {
-        comment: comment,
-        post_id: post_id,
+    var old_html = $("#editor").html();
+    $('#post-comment').on('click', function($e) {
+        $e.preventDefault();
+        let comment = JSON.stringify(quill.root.innerHTML);
+        // console.log(quill.root.innerHTML);
+        $.ajax({
+            type: "POST",
+            url : url_comment,
+            data: {
+                comment: comment,
+                post_id: post_id,
 
-      },
-      success: function (data,status, xhr)
-      {
-        if(xhr.status == 200) {
-        alert("Successfully sent to database");
-        }
-      },error: function() {
-        alert("Could not send to database");
-      }       
+            },
+            success: function (data,status, xhr)
+            {
+                if(xhr.status == 200) {
+                    let newComment = data.data;
+                    alert("Lưu bình luận thành công");
+                    let newText = 
+                    `<div class="card mt-3 show-comment">
+                        <div class="col-md-12 mt-2">
+                            <a class="customSize" href="${newComment.user.link}">
+                                <img style="width: 22px;height: 22px;border-radius: 50%;"
+                                    class="" src="${newComment.user.avatar}">
+                                    ${newComment.user.name}
+                            </a>
+                            <span class="style-date">${newComment.created_at}</span>
+                        </div>
+                        <div class="col-md-12 mt-2 style-comment">
+                            ${newComment.content}
+                        </div>
+                        <div class="col-12 reply-comment">
+                            <a class="mr-05 cursor-pointer">Phản hồi</a>
+                        </div>
+                    </div>`
+
+                    $('#show-comment').append(newText);
+                    $('#editor').html(old_html);
+                }
+            },error: function() {
+                alert("Lưu bình luận không thành công");
+            }       
+        });
     });
-  });
 });

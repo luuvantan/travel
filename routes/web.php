@@ -59,6 +59,10 @@ Route::delete('post', 'PostController@destroy')->name('post.delete');
 Route::get('notification', 'SendNotificationController@create')->name('notification.create');
 Route::post('notification', 'SendNotificationController@store')->name('notification.store');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/comment/addResponseComment', 'CommentController@addResponseComment')->name('comment.addResponseComment');
+});
+
 Route::resources([
     'homes' => 'HomeController',
     'posts' => 'PostController',

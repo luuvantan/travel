@@ -19,11 +19,32 @@ class CommentController extends Controller
         $comment->post_id = $request['post_id'];
         $comment->content = json_decode($request['comment']);
         $comment->save();
+        $data = Comment::with('user:id,name,avatar,email')
+                ->where('id',  $comment->id)->first();
+
+        return response()->json(['data' => $data]);
     }
 
     //show comment
     public function showComment()
     {
 
+    }
+
+    // addResponseComment
+    public function addResponseComment()
+    {
+        $request->validate([
+            'comment'=>'required',
+        ]);
+        $response_comment = new Response_comment();
+        $response_comment->user_id = \Auth::user()->id;
+        $response_comment->comment_id = $request['comment_id'];
+        $response_comment->content = json_decode($request['content']);
+        $response_comment->save();
+        $data = Response_comment::with('user:id,name,avatar,email')
+                ->where('id',  $response_comment->id)->first();
+
+        return response()->json(['data' => $data]);
     }
 }

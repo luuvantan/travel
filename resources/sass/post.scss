@@ -179,8 +179,29 @@ main {
 
     .show-comment {
         font-family: "Nunito", sans-serif !important;
+        padding: 10px;
         a {
             font-size: 16px;
+        }
+        .style-comment {
+            padding: 10px 20px 10px 40px;
+        }
+        img {
+            max-height: 200px;
+            max-width: auto;
+        }
+        .cursor-pointer {
+            cursor: pointer;
+            color: #9b9b9b !important;
+            float: right;
+            padding: 5px;        
+        }
+        .cursor-pointer:hover {
+            color: green !important;
+        }
+        .response-comment {
+            border-top: 1px solid rgba(0, 0, 0, 0.125) !important;
+            margin: 10px 20px 10px 50px;
         }
     }
 }
