@@ -18,9 +18,15 @@ class ProfileController extends Controller
         }
         $userCurrent = Auth::id() ?? 0;
         $isCheckUser = $userSearch->id === $userCurrent;
-        $postResult = Post::where('user_id', $userSearch->id);
-        $posts = $postResult->paginate(config('travel.paginate'));
-        $countPost = $postResult->get()->count();
+        if($isCheckUser == true) {
+            $postResult = Post::where('user_id', $userSearch->id);
+            $posts = $postResult->paginate(config('travel.paginate'));
+            $countPost = $postResult->get()->count();
+        } else {
+            $postResult = Post::where('user_id', $userSearch->id);
+            $posts = $postResult->where('status', 1)->paginate(config('travel.paginate'));
+            $countPost = $postResult->where('status', 1)->get()->count();
+        }
 
         return view('profiles.showProfile', compact('userSearch', 'posts', 'isCheckUser', 'countPost'));
     }

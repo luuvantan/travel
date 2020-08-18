@@ -18,6 +18,6 @@ class Comment extends Model
 
     public function response_comment()
     {
-        return $this->hasMany('App\Models\Response_comment')->with('user:id,name,avatar,email');
+        return $this->hasMany('App\Models\ResponseComment')->with('user:id,name,avatar,email');
     }
 }

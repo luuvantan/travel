@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\ResponseComment;
 
 class CommentController extends Controller
 {
@@ -32,17 +33,18 @@ class CommentController extends Controller
     }
 
     // addResponseComment
-    public function addResponseComment()
+    public function addResponseComment(Request $request)
     {
         $request->validate([
-            'comment'=>'required',
+            'content'=>'required',
         ]);
-        $response_comment = new Response_comment();
+        $response_comment = new ResponseComment();
         $response_comment->user_id = \Auth::user()->id;
         $response_comment->comment_id = $request['comment_id'];
-        $response_comment->content = json_decode($request['content']);
+        $response_comment->content = $request['content'];
         $response_comment->save();
-        $data = Response_comment::with('user:id,name,avatar,email')
+
+        $data = ResponseComment::with('user:id,name,avatar,email')
                 ->where('id',  $response_comment->id)->first();
 
         return response()->json(['data' => $data]);

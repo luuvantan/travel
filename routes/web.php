@@ -48,6 +48,8 @@ Route::group(['prefix'=>'travels'], function() {
     Route::get('/central', 'TravelController@central')->name('travels.central');
     Route::get('/southern', 'TravelController@southern')->name('travels.southern');
 });
+
+Route::get('/homes/aboutMe', 'HomeController@aboutMe')->name('aboutMe');
 Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
 Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
 Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
@@ -66,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::resources([
     'homes' => 'HomeController',
     'posts' => 'PostController',
-    'indexs' => 'IndexController',
     'experiences' => 'ExperienceController',
     'travels' => 'TravelController'
 ]);

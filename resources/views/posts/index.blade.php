@@ -103,7 +103,7 @@
                     </form> 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary mr-2 mt-5" id="post-comment" style="float:right;" type="submit">Lưu Bình Luận</button>
+                    <button class="btn btn-primary mr-2 mt-5 disabled" id="post-comment" style="float:right;" type="submit">Lưu Bình Luận</button>
                 </div>               
             </div>
             @else
@@ -135,41 +135,49 @@
                         {!! $comment->content !!}
                     </div>
                     <div class="col-12 reply-comment">
+                        @if(\Auth::check())
                         <a id="{{$key}}" class="mr-05 cursor-pointer">Phản hồi</a>
+                        @else
+                        <a href="{{route('login')}}" id="{{$key}}" class="mr-05 cursor-pointer">Phản hồi</a>
+                        @endif                        
                     </div>
                     
-                    @foreach($comment->response_comment as $response_comment)
-                    <div class="response-comment">
-                        <div class="mt-3 show-comment">
-                            <div class="col-md-12 mt-2">
-                                <a class="customSize" href="{{ $response_comment->user->link }}">
-                                    <img style="width: 22px;height: 22px;border-radius: 50%;"
-                                        class="" src="{{ $response_comment->user->avatar }}">
-                                    {{ $response_comment->user->name }}
-                                </a>
-                                <span class="style-date">{{ $response_comment->created_at }}</span>
-                            </div>
-                            <div class="col-md-12 mt-2 style-comment">
-                                {!! $response_comment->content !!}
+                    <div id="show-response-comment{{$comment->id}}">
+                        @foreach($comment->response_comment as $response_comment)
+                        <div class="response-comment">
+                            <div class="mt-3 show-comment">
+                                <div class="col-md-12 mt-2">
+                                    <a class="customSize" href="{{ $response_comment->user->link }}">
+                                        <img style="width: 22px;height: 22px;border-radius: 50%;"
+                                            class="" src="{{ $response_comment->user->avatar }}">
+                                        {{ $response_comment->user->name }}
+                                    </a>
+                                    <span class="style-date">{{ $response_comment->created_at }}</span>
+                                </div>
+                                <div class="col-md-12 mt-2 style-comment">
+                                    {!! $response_comment->content !!}
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
+
 
                     @if(\Auth::check())
-                    <div class="responseComment" id="responseComment{{$key}}" data-url="{{ route('comment.addResponseComment') }}" style="display: none;">
+                    <div class="responseComment response-comment" id="responseComment{{$key}}" data-url="{{ route('comment.addResponseComment') }}" style="display: none;">
                         <div class="row" style="padding:20px;">
                             <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
-                            <form style="width: calc(100% - 50px)" action="" class="response-comment">
+                            <form style="width: calc(100% - 50px)" action="{{ route('comment.addResponseComment') }}" id="save-response-comment{{$key}}" data-url-response="{{ route('comment.addResponseComment') }}">
                                 <div class="form-group green-border-focus">
                                     <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
-                                    <textarea id="content-response-comment" rows="2" name="content-response-comment"></textarea>
+                                    <input type="text" id="comment-id{{$key}}" value="{{$comment->id}}" hidden>
+                                    <textarea class="form-control" data-key="{{$key}}" id="content-response-comment{{$key}}" rows="2" name="content-response-comment" require></textarea>
                                 </div>
                             </form> 
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary mr-2 mt-5" id="post-response-comment" style="float:right;" type="submit">Lưu Phản hồi</button>
-                            <button class="btn btn-secondary mr-2 mt-5 cancel-submit" style="float:right;" >Hủy Phản hồi</button>
+                            <button class="btn btn-primary mr-2 mt-3 post-response-comment disabled" id="post-response-comment{{$key}}" style="float:right;" data-key="{{$key}}" type="submit">Lưu Phản hồi</button>
+                            <button class="btn btn-secondary mr-2 mt-3 cancel-submit" style="float:right;" >Hủy Phản hồi</button>
                         </div>               
                     </div>
                     @endif

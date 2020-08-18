@@ -78,13 +78,6 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                </div>
-                <div class="col-6">
-                    {{ $highlights->links("pagination") }}
-                </div>
-            </div>
         </div>
 
         <!-- tin tuc -->
@@ -96,12 +89,18 @@
                     <img src="{{ $new->url_img }}" alt="" style="max-width: 74px;" class="float-left hover-img mt-1">
                 </div>
                 <div class="text">
-                    <a href="{{ $new->link }}" class="color-green">{{ $new->provincial->name }}</a>
-                    <p class="text-title"><b>{{ mb_substr($new->title, 0, 60, 'UTF-8') }}</b></p>
+                    <p class="color-green" style="margin-bottom: 1px !important;">{{ $new->provincial->name }}</p>
+                    <a href="{{ $new->link }}" class="text-title" style="color: black;"><b>{{ mb_substr($new->title, 0, 60, 'UTF-8') }}</b></a>
                 </div>
             </div>
             <hr>
             @endforeach
+        </div>
+
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            {{ $highlights->links("pagination") }}
         </div>
     </div>
 </div>

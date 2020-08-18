@@ -13,7 +13,7 @@
             <img src="{{ asset($userSearch->avatar ? $userSearch->avatar : 'images/image/no-image.png') }}"
                  alt="no-images" class="avatar" style="width: 80px;height: 80px; border-radius: 50%">
         </div>
-        <div class="col-md-1" style="min-width: 150px">
+        <div class="" style="min-width: 100px">
             <div class="edit-profile">
                 <div class="name">
                     <h4>{{ $userSearch->name }}</h4>
@@ -41,6 +41,9 @@
                         <td>{{ $key+1 }}</td>
                         <td><a href="{{ $post->link }}">{{ mb_substr($post->title, 0, 70, 'utf-8') }}...</a></td>
                         @if ($isCheckUser)
+                            <td style="color: #9b9b9b !important; padding-top:auto;">
+                                {{ $post->status == 1 ? 'đã phê duyệt' : "chờ phê duyệt" }}
+                            </td>
                             <td>
                                 <form action="{{ route('post.delete', ['post_id' => $post->id, 'checkUser' => $isCheckUser, 'name' => $userSearch->name]) }}"
                                     method="post" style="display: inline">

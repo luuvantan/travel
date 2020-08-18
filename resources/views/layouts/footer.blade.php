@@ -5,12 +5,11 @@
             <div class="row">
                 <div class="col-md-4 mt-md-0 mt-1">
                     <div class="p-1 d-flex" style="border-bottom: 1px solid #b8c0c4;">
-                        <h4 style="color:#565e65">Về chúng tôi</h4>
+                        <h4 style="color:#565e65">Liên hệ</h4>
                     </div>
                     <div class="mt-2">
-                        <a href="" style="font-size:16px; margin-left:10px; color:black">  Giới thiệu</a><br>
-                        <a href="" style="font-size:16px; margin-left:10px; color:black">  Liên hệ</a><br>
-                        <a href="" style="font-size:16px; margin-left:10px; color:black">  Hướng dẫn sử dụng</a>
+                        <p><i class="fa fa-phone" aria-hidden="true" style="color:green;font-size:20px;padding:10px 10px 0px 0px;"></i>&nbsp 0382723926</p>
+                        <p><i class="fa fa-envelope-o" aria-hidden="true" style="color:green;font-size:20px;padding:10px 10px 0px 0px;"></i>&nbsp tanthptdt2@gmail.com</p>
                     </div>
                 </div>
                 <hr class="clearfix w-100 d-md-none pb-3">

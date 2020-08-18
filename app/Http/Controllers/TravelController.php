@@ -28,12 +28,17 @@ class TravelController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with(['Provincial' => function ($query) {
-                        $query->where('region_id', 1);
-                    }])->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 1);
+                    })->where('status', 1)->paginate(10);
             // ->where('category_id', 3)     
         } else {
-            $datas = Post::where('provincial_id', $provincialId)->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 1);
+                    })->where('provincial_id', $provincialId)
+                    ->where('status', 1)->paginate(10);
         }
 
         return view('travels.index', \compact('title', 'provincials', 'datas'));
@@ -47,13 +52,15 @@ class TravelController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with(['Provincial' => function ($query) {
-                        $query->where('region_id', 2);
-                    }])->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 2);
+                    })->where('status', 1)->paginate(10);
         } else {
-            $datas = $datas = Post::with(['Provincial' => function ($query) {
-                        $query->where('region_id', 2);
-                    }])->where('provincial_id', $provincialId)->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 2);
+                    })->where('provincial_id', $provincialId)->where('status', 1)->paginate(10);
         }
         
         return view('travels.index', \compact('title', 'provincials', 'datas'));
@@ -67,13 +74,15 @@ class TravelController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->pluck('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with(['Provincial' => function ($query) {
-                        $query->where('region_id', 3);
-                    }])->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 3);
+                    })->where('status', 1)->paginate(10);
         } else {
-            $datas = $datas = Post::with(['Provincial' => function ($query) {
-                        $query->where('region_id', 3);
-                    }])->where('provincial_id', $provincialId)->paginate(10);
+            $datas = Post::join('provincials', function ($query) {
+                        $query->on('posts.provincial_id', '=', 'provincials.id')
+                        ->where('region_id', 3);
+                    })->where('status', 1)->where('provincial_id', $provincialId)->paginate(10);
         }
         
         return view('travels.index', \compact('title', 'provincials', 'datas'));

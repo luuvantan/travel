@@ -41,19 +41,19 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
+                            <a class="nav-link items-menu" href="{{ route('posts.create') }}">
                                 Đăng Bài
-                                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                                <!-- <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> -->
                             </a>
-                            <div class="dropdown-menu items-hover">
+                            <!-- <div class="dropdown-menu items-hover">
                                 <a class="dropdown-item nav-link" href="{{ route('posts.create') }}">Chia Sẻ</a>
                                 <a class="dropdown-item nav-link" href="#">Câu Hỏi</a>
-                            </div>
+                            </div> -->
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
-                                Liên Hệ
+                            <a class="nav-link items-menu" href="{{ route('aboutMe') }}">
+                                Giới thiệu
                             </a>
                         </li>
                         <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>

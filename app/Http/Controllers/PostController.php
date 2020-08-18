@@ -56,10 +56,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        $title = "Tạo bài viết";
         $provincials = Provincial::orderBy('name')->get();
         $categorys = Category::all();
 
-        return view('Posts.create', \compact('provincials', 'categorys'));
+        return view('Posts.create', \compact('title', 'provincials', 'categorys'));
     }
 
     /**
@@ -70,6 +71,7 @@ class PostController extends Controller
      */
     public function store(CreatePost $request)
     {
+        $getEmail = \Auth::user()->email;
         $post = new Post;
         $post->user_id = \Auth::user()->id;
         $post->title = $request['title'];
@@ -88,7 +90,7 @@ class PostController extends Controller
         }
         $post->save();
 
-        return redirect()->route('page.post', ['title' => \Str::slug($post->title), 'id' => $post->id])->with('alert-success', 'create success');
+        return redirect()->route('profile.showProfile', ['email' => $getEmail])->with('alert-success', 'Thêm bài viết thành công');
     }
 
     /**

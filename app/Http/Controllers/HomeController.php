@@ -35,14 +35,17 @@ class HomeController extends Controller
     {
         $title = "Trang chủ";
         $news = Post::with('user:id,name,avatar,email')
+            ->where('status', 1)
             ->orderBy('created_at', 'DESC')
             ->take(8)->get();
 
         $suggests = Post::with('user:id,name,avatar,email')
+            ->where('status', 1)
             ->with(['comment'])->get()
             ->sortByDesc('countComment')->take(8);
 
         $dataHighlights = Post::with('user:id,name,avatar,email')
+            ->where('status', 1)
             ->with(['vote'])->get()
             ->sortByDesc('sumVote');
 
@@ -51,7 +54,7 @@ class HomeController extends Controller
         return view("homes.overview", \compact('title', 'news', 'suggests', 'highlights'));
     }
 
-    public function customPaginate($items, $perPage = 10, $page = null, $options = [])
+    public function customPaginate($items, $perPage = 12, $page = null, $options = [])
     {
         $base_url = env('APP_URL') . '/';
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
@@ -59,5 +62,11 @@ class HomeController extends Controller
         $highlights = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
         
         return $highlights->setPath($base_url . 'homes/');
+    }
+
+    public function aboutMe()
+    {
+        $title = "Về chúng tôi";
+        return view("layouts.introduce", \compact('title'));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Response_comment extends Model
+class ResponseComment extends Model
 {
     public function comment()
     {
