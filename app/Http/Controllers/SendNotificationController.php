@@ -36,16 +36,6 @@ class SendNotificationController extends Controller
             ]
         );
 
-        // $pusher = new \Pusher(
-        //     '3a4ce77f72008aee06d5',
-        //     'f5dc1c7b760fd541a8f6',
-        //     '1052523',
-        //     [
-        //         'cluster' => 'ap1',
-        //         'encrypted' => false
-        //     ]
-        //   );
-
         $pusher->trigger('SendMessage', 'send-message', $data);
 
         return view('layouts.notification');
