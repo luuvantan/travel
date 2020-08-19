@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 @section('title')
-  Users
+  Quản lý người dùng
 @endsection
 
 @section('content')

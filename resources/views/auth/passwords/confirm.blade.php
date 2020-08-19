@@ -3,9 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+        <div class="col-md-8" style="margin-top: 50px !important;">
+            <div class="">
+                <div class="">
+                    <h1 class="text-center" style="color:green;">Xác nhận mật khẩu</h1>
+                    <br><br>
+                </div>
 
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}

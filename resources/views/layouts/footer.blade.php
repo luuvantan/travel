@@ -8,8 +8,8 @@
                         <h4 style="color:#565e65">Liên hệ</h4>
                     </div>
                     <div class="mt-2">
-                        <p><i class="fa fa-phone" aria-hidden="true" style="color:green;font-size:20px;padding:10px 10px 0px 0px;"></i>&nbsp 0382723926</p>
-                        <p><i class="fa fa-envelope-o" aria-hidden="true" style="color:green;font-size:20px;padding:10px 10px 0px 0px;"></i>&nbsp tanthptdt2@gmail.com</p>
+                        <p style="margin-bottom:0px !important;"><i class="fa fa-phone" aria-hidden="true" style="color:green;font-size:20px;padding:5px 10px 0px 0px;"></i>&nbsp 0382723926</p>
+                        <p><i class="fa fa-envelope-o" aria-hidden="true" style="color:green;font-size:20px;padding:5px 10px 0px 0px;"></i>&nbsp tanthptdt2@gmail.com</p>
                     </div>
                 </div>
                 <hr class="clearfix w-100 d-md-none pb-3">

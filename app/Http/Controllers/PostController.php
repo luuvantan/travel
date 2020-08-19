@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $title = "Tạo bài viết";
         $provincials = Provincial::orderBy('name')->get();
-        $categorys = Category::all();
+        $categorys = Category::where('id', '!=', 3)->get();
 
         return view('Posts.create', \compact('title', 'provincials', 'categorys'));
     }
