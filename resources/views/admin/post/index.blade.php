@@ -49,9 +49,9 @@
                 <td class="text-center">{{ $item->title }}</td>
                 <td class="text-center">
                   @if ($item->status == 0)
-                  <a href="admin/post/change-status/{{$item->id}}" class="btn btn-warning w-130">Duyệt bài</a>
+                  <a href="{{ route('admin.post.change-status', $item->id) }}" class="btn btn-warning w-130">Duyệt bài</a>
                   @elseif ($item->status == 1)
-                  <a href="admin/post/change-status/{{$item->id}}" class="btn btn-success w-130">Bỏ duyệt bài</a>
+                  <a href="{{ route('admin.post.change-status', $item->id) }}" class="btn btn-success w-130">Bỏ duyệt bài</a>
                   @endif
                 </td>
                 <td class="text-center">

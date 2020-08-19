@@ -67,7 +67,7 @@
                             <div style="margin-bottom: 1rem;" class="">
                                 <a class="customSize" href="{{ $highlight->user->link }}">
                                     <img style="width: 22px;height: 22px;border-radius: 50%;"
-                                        class="" src="{{ $highlight->user->avatar }}">
+                                        class="" src="{{ asset($highlight->user->avatar ? $highlight->user->avatar : 'images/image/no-image.png') }}">
                                     {{ $highlight->user->name }}
                                 </a>
                             </div>

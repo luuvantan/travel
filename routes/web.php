@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('example1');
-    // return redirect()->route('login');
+    // return view('example1');
+    return redirect()->route('login');
 });
 Auth::routes();
 Route::group(['middleware' => 'travel'], function () {
@@ -32,6 +32,7 @@ Route::group(['middleware' => 'travel'], function () {
         Route::get('comment', 'admin\CommentController@index')->name('admin.comment.list');
         Route::delete('comment', 'admin\CommentController@destroy')->name('admin.comment.delete');
 
+        Route::get('users/change-status/{id}', 'admin\UserController@changeStatus')->name('users.change-status');
         Route::resources([
             'users' => 'admin\UserController',
         ]);
@@ -49,14 +50,19 @@ Route::group(['prefix'=>'travels'], function() {
     Route::get('/southern', 'TravelController@southern')->name('travels.southern');
 });
 
-Route::get('/homes/aboutMe', 'HomeController@aboutMe')->name('aboutMe');
+Route::group(['prefix'=>'profile'], function() {
+    Route::get('/{email}', 'ProfileController@showProfile')->name('profile.showProfile');
+    Route::get('/editProfile/{id}', 'ProfileController@editProfile')->name('profile.editProfile');
+    Route::patch('/updateProfile/{id}', 'ProfileController@updateProfile')->name('profile.updateProfile');
+});
+
+Route::get('/aboutMe', 'HomeController@aboutMe')->name('aboutMe');
 Route::get('/search', 'PostController@searchByValue')->name('autocomplete');
 Route::get('/post/{title}.{id}', 'PostController@pagePost')->name('page.post');
 Route::post('/vote/addVote', 'VoteController@addVote')->name('vote.addVote');
 Route::get('/vote/showVote', 'VoteController@showVote')->name('vote.showVote');
 Route::post('/comment/addComment', 'CommentController@addComment')->name('comment.addComment');
 Route::get('/comment/showComment', 'CommentController@showComment')->name('comment.showComment');
-Route::get('/profile/{email}', 'ProfileController@showProfile')->name('profile.showProfile');
 Route::delete('post', 'PostController@destroy')->name('post.delete');
 Route::get('notification', 'SendNotificationController@create')->name('notification.create');
 Route::post('notification', 'SendNotificationController@store')->name('notification.store');

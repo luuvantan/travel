@@ -6,7 +6,7 @@
         @if (session('thongbao'))
             <div class="alert bg-success col-md-8 offset-md-2" style="color: white;">
                 <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                <span class="">Well done !</span> {{session('thongbao')}}
+                <span class="">Thành công !</span> {{session('thongbao')}}
             </div>
         @endif
         <div class="col-md-1 mr-5 offset-md-2">
@@ -25,9 +25,9 @@
         </div>
         <div class="col-md-2">
           @if ($isCheckUser)
-            <button class="btn btn-sm btn-outline-primary is-edit">
+            <a href="{{ route('profile.editProfile', $userSearch->id) }}" class="btn btn-sm btn-outline-primary is-edit">
               Edit
-            </button>
+            </a>
           @endif
         </div>
     </div>
@@ -45,7 +45,7 @@
                                 {{ $post->status == 1 ? 'đã phê duyệt' : "chờ phê duyệt" }}
                             </td>
                             <td>
-                                <form action="{{ route('post.delete', ['post_id' => $post->id, 'checkUser' => $isCheckUser, 'name' => $userSearch->name]) }}"
+                                <form action="{{ route('post.delete', ['post_id' => $post->id, 'checkUser' => $isCheckUser, 'email' => $userSearch->email]) }}"
                                     method="post" style="display: inline">
                                     @csrf
                                     @method('DELETE')
@@ -60,7 +60,7 @@
                 @endforeach
                 @else
                     <div class="text-center font-weight-bold text-muted my-05">
-                        There is nothing here.
+                        Không có bài post nào
                     </div>
                 @endif
                 </tbody>

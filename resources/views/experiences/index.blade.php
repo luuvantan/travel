@@ -31,7 +31,7 @@
                                         <a href="{{ $data->link }}"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
                                     </h2>
                                     <div class="frame-date pb-1" style="">
-                                        <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ $data->user->avatar }}" alt="date">
+                                        <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ asset($data->user->avatar ? $data->user->avatar : 'images/image/no-image.png') }}" alt="date">
                                         <a class="customSize" href="{{ $data->user->link }}">{{ $data->user->name }}</a> / {{ $data->created_at }}
                                         </div>
                                     </div>

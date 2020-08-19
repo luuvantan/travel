@@ -10,13 +10,11 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item dropdown no-arrow mx-1">
+        <!-- <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter">3+</span>
             </a>
-          <!-- Dropdown - Alerts -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                 Alerts Center
@@ -56,26 +54,24 @@
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
-        </li>
+        </li> -->
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
-        <!-- Nav Item - User Information -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" aria-controls="navbarDropdown" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false" v-pre>
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{  Auth::user()->name }}</span>
-                <img class="img-profile rounded-circle" src="{{ Auth::user()->url_img }}">
+                <img class="img-profile rounded-circle" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}">
             </a>
-            <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Hồ sơ
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Đăng xuất
                 </a>
               </div>
         </li>

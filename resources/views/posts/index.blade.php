@@ -10,7 +10,7 @@
                 <div class="show-post">
                     <div class="col-md-12 mt-2">
                         <a class="customSize" href="{{ $post->user->link }}">
-                            <img style="" class="owner-post-img" src="{{ $post->user->avatar }}">
+                            <img style="" class="owner-post-img" src="{{ asset($post->user->avatar ? $post->user->avatar : 'images/image/no-image.png') }}">
                             {{ $post->user->name }}
                         </a>
                         <span class="" style="color: #9b9b9b!important; font-size: 14px;">/{{ $post->created_at }}</span>
@@ -90,7 +90,7 @@
             @if(\Auth::check())
             <div class="card" id="comment" data-url="{{ route('comment.addComment') }}">
                 <div class="row" style="padding:20px;">
-                    <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
+                    <img class="avatar" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}"></img>
                     <form style="width: calc(100% - 50px)" action="" class="comment">
                         <div class="form-group green-border-focus">
                             <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
@@ -126,7 +126,7 @@
                     <div class="col-md-12 mt-2">
                         <a class="customSize" href="{{ $comment->user->link }}">
                             <img style="width: 22px;height: 22px;border-radius: 50%;"
-                                class="" src="{{ $comment->user->avatar }}">
+                                class="" src="{{ asset($comment->user->avatar ? $comment->user->avatar : 'images/image/no-image.png') }}">
                             {{ $comment->user->name }}
                         </a>
                         <span class="style-date">{{ $comment->created_at }}</span>
@@ -149,7 +149,7 @@
                                 <div class="col-md-12 mt-2">
                                     <a class="customSize" href="{{ $response_comment->user->link }}">
                                         <img style="width: 22px;height: 22px;border-radius: 50%;"
-                                            class="" src="{{ $response_comment->user->avatar }}">
+                                            class="" src="{{ asset($response_comment->user->avatar ? $response_comment->user->avatar : 'images/image/no-image.png') }}">
                                         {{ $response_comment->user->name }}
                                     </a>
                                     <span class="style-date">{{ $response_comment->created_at }}</span>
@@ -166,7 +166,7 @@
                     @if(\Auth::check())
                     <div class="responseComment response-comment" id="responseComment{{$key}}" data-url="{{ route('comment.addResponseComment') }}" style="display: none;">
                         <div class="row" style="padding:20px;">
-                            <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
+                            <img class="avatar" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}"></img>
                             <form style="width: calc(100% - 50px)" action="{{ route('comment.addResponseComment') }}" id="save-response-comment{{$key}}" data-url-response="{{ route('comment.addResponseComment') }}">
                                 <div class="form-group green-border-focus">
                                     <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->

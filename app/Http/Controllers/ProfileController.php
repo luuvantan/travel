@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -35,5 +37,36 @@ class ProfileController extends Controller
     public function ownerProfile()
     {
 
+    }
+
+    public function editProfile(Request $request, $id)
+    {
+        $profile = Auth::user();
+
+        return view('profiles.edit', \compact('profile'));
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'avatar' => ['image', 'mimes:jpeg,jpg,png,gif', 'max:5120'],
+            // 'password' => ['string', 'min:6'],
+        ]);
+
+        $user = Auth::user();
+        $data['name'] = $request->name;
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $name = time() . '.' . $avatar->getClientOriginalExtension();
+            $filePath = 'public/avatar/' . $name;
+            \Storage::put($filePath, file_get_contents($avatar));
+
+            $data['avatar'] = \Storage::url($filePath);
+        }
+        
+        $user->update($data);
+
+        return redirect()->route('profile.showProfile', ['email' => $user->email])->with('alert-success', 'Chỉnh sửa profile thành công');
     }
 }

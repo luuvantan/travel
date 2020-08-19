@@ -135,12 +135,12 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = $request->only(['checkUser', 'post_id', 'name']);
+        $data = $request->only(['checkUser', 'post_id', 'email']);
         if ($data['checkUser']) {
             $post = Post::findOrFail($data['post_id']);
             $post->delete();
 
-            return redirect()->route('profile.showProfile', ['name' => $data['name']])->with('thongbao', 'Xóa post thành công');
+            return redirect()->route('profile.showProfile', ['email' => $data['email']])->with('alert-success', 'Xóa post thành công');
         }
         return abort('404');
 
@@ -156,12 +156,7 @@ class PostController extends Controller
     public function searchByValue(Request $request)
     {
         $param = $request->only(['value']);
-        $searchs = Post::where(function ($query) use ($param) {
-            return $query->where('name', 'like', '%' . $param['value'] . '%')
-                ->orWhere('title', 'like', '%' . $param['value'] . '%')
-                ->orWhere('content', 'like', '%' . $param['value'] . '%')
-                ->orWhere('title', 'like', '%' . $param['value'] . '%');
-        })->get();
+        $searchs = Post::where('title', 'like', '%' . $param['value'] . '%')->get();
 
         return response()->json($searchs);
     }
