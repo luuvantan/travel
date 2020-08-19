@@ -24,6 +24,10 @@ $(document).ready(function() {
             categories: listOfYear,
         },
 
+        credits: {
+            enabled: false
+        },
+
         series: [{
             type: 'column',
             colorByPoint: true,
@@ -62,7 +66,11 @@ $(document).ready(function() {
         title: {
           text: 'Du Lịch'
         },
- 
+
+        credits: {
+            enabled: false
+        },
+        
         plotOptions: {
           pie: {
             allowPointSelect: true,

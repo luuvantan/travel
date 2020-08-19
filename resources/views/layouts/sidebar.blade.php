@@ -11,13 +11,13 @@
                 <!-- Links -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="{{ route('homes.index') }}">
+                            <a class="nav-link items-menu {{request()->segment(1) == 'homes' ? 'actived' : ''}}" href="{{ route('homes.index') }}">
                                 Trang Chủ
                             </a>
                         </li>
  
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
+                            <a class="nav-link items-menu {{request()->segment(1) == 'travels' ? 'actived' : ''}}" href="#">
                                 Du Lịch
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
@@ -29,7 +29,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
+                            <a class="nav-link items-menu {{request()->segment(1) == 'experiences' ? 'actived' : ''}}" href="#">
                                 Kinh Nghiệm
                                 <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                             </a>
@@ -41,19 +41,19 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
+                            <a class="nav-link items-menu {{request()->segment(1) == 'posts' ? 'actived' : ''}}" href="{{ route('posts.create') }}">
                                 Đăng Bài
-                                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                                <!-- <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> -->
                             </a>
-                            <div class="dropdown-menu items-hover">
+                            <!-- <div class="dropdown-menu items-hover">
                                 <a class="dropdown-item nav-link" href="{{ route('posts.create') }}">Chia Sẻ</a>
                                 <a class="dropdown-item nav-link" href="#">Câu Hỏi</a>
-                            </div>
+                            </div> -->
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link items-menu" href="#">
-                                Liên Hệ
+                            <a class="nav-link items-menu {{request()->segment(1) == 'aboutMe' ? 'actived' : ''}}" href="{{ route('aboutMe') }}">
+                                Giới thiệu
                             </a>
                         </li>
                         <button type="button" id="searchBtn" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
@@ -70,22 +70,20 @@
 
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Đăng kí</a>
                                 </li>
                             @endif
                         @else
 
-                            <li class="nav-item dropdown">
-                                <a style="margin-top: 4px;" class="nav-link items-menu" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <!-- <li class="nav-item dropdown">
+                                <a style="margin-top: 2px;" class="nav-link items-menu" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-bell"></i>
-                                    <!-- Counter - Alerts -->
                                     <span class="badge badge-danger badge-counter">3+</span>
                                 </a>
-                                <!-- Dropdown - Alerts -->
                                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                     @foreach (Auth::user()->notifications as $notification)
                                         <a class="dropdown-item" href="#">
@@ -94,7 +92,7 @@
                                         </a>
                                     @endforeach
                                 </div>
-                            </li>
+                            </li> -->
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -102,18 +100,18 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                     style="padding-top: 6.5px !important;" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                                    <img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ Auth::user()->avatar }}">
+                                    <img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ Auth::user()->link }}">
-                                        Profile
+                                        Hồ sơ
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Đăng xuất
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -42,7 +42,7 @@ class PostController extends Controller
         $sumVote = $votes->get()->sum('vote');
         $average = ($countVote>0) ? round($sumVote/$countVote, 1) : 0;
         $userVote = (!empty($user_id) && $countVote >0) ? $votes->where('user_id', $user_id)->select('vote')->first() : 0;
-        $comments = Comment::with('user:id,name,avatar,email')
+        $comments = Comment::with(['user:id,name,avatar,email', 'response_comment'])
                     ->where('post_id', $post_id)
                     ->orderBy('created_at', 'DESC')->get();
 
@@ -56,10 +56,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        $title = "Tạo bài viết";
         $provincials = Provincial::orderBy('name')->get();
-        $categorys = Category::all();
+        $categorys = Category::where('id', '!=', 3)->get();
 
-        return view('Posts.create', \compact('provincials', 'categorys'));
+        return view('Posts.create', \compact('title', 'provincials', 'categorys'));
     }
 
     /**
@@ -70,6 +71,7 @@ class PostController extends Controller
      */
     public function store(CreatePost $request)
     {
+        $getEmail = \Auth::user()->email;
         $post = new Post;
         $post->user_id = \Auth::user()->id;
         $post->title = $request['title'];
@@ -88,7 +90,7 @@ class PostController extends Controller
         }
         $post->save();
 
-        return redirect()->route('page.post', ['title' => \Str::slug($post->title), 'id' => $post->id])->with('alert-success', 'create success');
+        return redirect()->route('profile.showProfile', ['email' => $getEmail])->with('alert-success', 'Thêm bài viết thành công');
     }
 
     /**
@@ -133,12 +135,12 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = $request->only(['checkUser', 'post_id', 'name']);
+        $data = $request->only(['checkUser', 'post_id', 'email']);
         if ($data['checkUser']) {
             $post = Post::findOrFail($data['post_id']);
             $post->delete();
 
-            return redirect()->route('profile.showProfile', ['name' => $data['name']])->with('thongbao', 'Xóa post thành công');
+            return redirect()->route('profile.showProfile', ['email' => $data['email']])->with('alert-success', 'Xóa post thành công');
         }
         return abort('404');
 
@@ -154,12 +156,7 @@ class PostController extends Controller
     public function searchByValue(Request $request)
     {
         $param = $request->only(['value']);
-        $searchs = Post::where(function ($query) use ($param) {
-            return $query->where('name', 'like', '%' . $param['value'] . '%')
-                ->orWhere('title', 'like', '%' . $param['value'] . '%')
-                ->orWhere('content', 'like', '%' . $param['value'] . '%')
-                ->orWhere('title', 'like', '%' . $param['value'] . '%');
-        })->get();
+        $searchs = Post::where('title', 'like', '%' . $param['value'] . '%')->get();
 
         return response()->json($searchs);
     }

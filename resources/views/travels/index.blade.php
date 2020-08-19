@@ -17,7 +17,7 @@
                 </select>
             </div>
             @foreach($datas as $key => $data)
-            <div class="col-md-12">
+            <div class="col-md-12" style="border-bottom: 1px solid rgba(0,0,0,.1);">
                 <div class="row mg-bot30 show-item">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 mg-bot">
                         <a href="/du-lich-bang-hinh-anh/du-lich-can-gio-choi-gi-va-an-o-dau-v6591.aspx" title="Du lịch Cần Giờ chơi gì và ăn ở đâu?">
@@ -30,7 +30,7 @@
                                     <a href="{{ $data->link }}"class="dot-dot cut-name" style="overflow-wrap: break-word;">{{ $data->title }}</a>
                                 </h2>
                                 <div class="frame-date pb-1" style="">
-                                    <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ $data->user->avatar }}" alt="date">
+                                    <div class="f-left"><img style="width: 30px;height: 30px;border-radius: 50%;" class="" src="{{ asset($data->user->avatar ? $data->user->avatar : 'images/image/no-image.png') }}" alt="date">
                                     <a class="customSize" href="{{ $data->user->link }}">{{ $data->user->name }}</a> / {{ $data->created_at }}
                                     </div>
                                 </div>

@@ -42,3 +42,12 @@ main {
 .customSize {
     font-size: 1rem;
 }
+
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.about {
+    padding: 30px;
+}

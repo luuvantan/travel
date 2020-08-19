@@ -10,7 +10,7 @@
                 <div class="show-post">
                     <div class="col-md-12 mt-2">
                         <a class="customSize" href="{{ $post->user->link }}">
-                            <img style="" class="owner-post-img" src="{{ $post->user->avatar }}">
+                            <img style="" class="owner-post-img" src="{{ asset($post->user->avatar ? $post->user->avatar : 'images/image/no-image.png') }}">
                             {{ $post->user->name }}
                         </a>
                         <span class="" style="color: #9b9b9b!important; font-size: 14px;">/{{ $post->created_at }}</span>
@@ -86,11 +86,11 @@
                     </fieldset>
                 </div>   
             </div>
-            <h4>Comments</p>
+            <h4>Bình luận</h4>
             @if(\Auth::check())
             <div class="card" id="comment" data-url="{{ route('comment.addComment') }}">
                 <div class="row" style="padding:20px;">
-                    <img class="avatar" src="{{ \Auth::user()->avatar }}"></img>
+                    <img class="avatar" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}"></img>
                     <form style="width: calc(100% - 50px)" action="" class="comment">
                         <div class="form-group green-border-focus">
                             <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
@@ -103,7 +103,7 @@
                     </form> 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary mr-2 mt-5" id="post-comment" style="float:right;" type="submit">Post Comment</button>
+                    <button class="btn btn-primary mr-2 mt-5 disabled" id="post-comment" style="float:right;" type="submit">Lưu Bình Luận</button>
                 </div>               
             </div>
             @else
@@ -112,7 +112,7 @@
                     <a href="{{ route('login') }}">
                         <span class="card-text text-muted">
                             <i aria-hidden="true" class="fa fa-comment-o"></i>
-                            Login to comment
+                            Đăng nhập để bình luận
                         </span>
                     </a>
                     
@@ -120,23 +120,70 @@
             </div>
                 <!-- <a href="">login</a> -->
             @endif
+            <div id="show-comment">
+                @foreach($comments as $key => $comment)
+                <div class="card mt-3 show-comment">
+                    <div class="col-md-12 mt-2">
+                        <a class="customSize" href="{{ $comment->user->link }}">
+                            <img style="width: 22px;height: 22px;border-radius: 50%;"
+                                class="" src="{{ asset($comment->user->avatar ? $comment->user->avatar : 'images/image/no-image.png') }}">
+                            {{ $comment->user->name }}
+                        </a>
+                        <span class="style-date">{{ $comment->created_at }}</span>
+                    </div>
+                    <div class="col-md-12 mt-2 style-comment">
+                        {!! $comment->content !!}
+                    </div>
+                    <div class="col-12 reply-comment">
+                        @if(\Auth::check())
+                        <a id="{{$key}}" class="mr-05 cursor-pointer">Phản hồi</a>
+                        @else
+                        <a href="{{route('login')}}" id="{{$key}}" class="mr-05 cursor-pointer">Phản hồi</a>
+                        @endif                        
+                    </div>
+                    
+                    <div id="show-response-comment{{$comment->id}}">
+                        @foreach($comment->response_comment as $response_comment)
+                        <div class="response-comment">
+                            <div class="mt-3 show-comment">
+                                <div class="col-md-12 mt-2">
+                                    <a class="customSize" href="{{ $response_comment->user->link }}">
+                                        <img style="width: 22px;height: 22px;border-radius: 50%;"
+                                            class="" src="{{ asset($response_comment->user->avatar ? $response_comment->user->avatar : 'images/image/no-image.png') }}">
+                                        {{ $response_comment->user->name }}
+                                    </a>
+                                    <span class="style-date">{{ $response_comment->created_at }}</span>
+                                </div>
+                                <div class="col-md-12 mt-2 style-comment">
+                                    {!! $response_comment->content !!}
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
 
-            @foreach($comments as $key=>$comment)
-            <div class="card mt-3 show-comment">
-                <div class="col-md-12 mt-2">
-                    <a class="customSize" href="{{ $comment->user->link }}">
-                        <img style="width: 22px;height: 22px;border-radius: 50%;"
-                            class="" src="{{ $comment->user->avatar }}">
-                        {{ $comment->user->name }}
-                    </a>
-                    <span class="style-date">{{ $comment->created_at }}</span>
+
+                    @if(\Auth::check())
+                    <div class="responseComment response-comment" id="responseComment{{$key}}" data-url="{{ route('comment.addResponseComment') }}" style="display: none;">
+                        <div class="row" style="padding:20px;">
+                            <img class="avatar" src="{{ asset(Auth::user()->avatar ? Auth::user()->avatar : 'images/image/no-image.png') }}"></img>
+                            <form style="width: calc(100% - 50px)" action="{{ route('comment.addResponseComment') }}" id="save-response-comment{{$key}}" data-url-response="{{ route('comment.addResponseComment') }}">
+                                <div class="form-group green-border-focus">
+                                    <!-- <textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea> -->
+                                    <input type="text" id="comment-id{{$key}}" value="{{$comment->id}}" hidden>
+                                    <textarea class="form-control" data-key="{{$key}}" id="content-response-comment{{$key}}" rows="2" name="content-response-comment" require></textarea>
+                                </div>
+                            </form> 
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary mr-2 mt-3 post-response-comment disabled" id="post-response-comment{{$key}}" style="float:right;" data-key="{{$key}}" type="submit">Lưu Phản hồi</button>
+                            <button class="btn btn-secondary mr-2 mt-3 cancel-submit" style="float:right;" >Hủy Phản hồi</button>
+                        </div>               
+                    </div>
+                    @endif
                 </div>
-                <div class="col-md-12 mt-2">
-                    {!! $comment->content !!}
-                </div>
-                
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 @endsection

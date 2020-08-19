@@ -12,7 +12,18 @@
     }
 }
 
-.w-140 {
-    width: 140px;
+.w-130 {
+    width: 130px;
     margin: 5px;
+}
+.w-150 {
+    width: 150px;
+    margin: 5px;
+}
+.actived {
+    color: pink !important;
+}
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
 }

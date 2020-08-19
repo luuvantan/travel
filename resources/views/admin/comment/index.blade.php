@@ -17,7 +17,7 @@
         @if(session('thongbao'))
           <div class="alert bg-success" style="color: white;">
             <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-            <span class="">Well done!</span> {{session('thongbao')}}
+            <span class="">Thành Công!</span> {{session('thongbao')}}
           </div>
         @endif
         <div class="table-responsive">
@@ -37,7 +37,7 @@
                 <td class="text-center">{{ $key + 1 }}</td>
                 <td class="text-center">{{ $item->post->name }}</td>
                 <td class="text-center">{{ $item->user->name }}</td>
-                <td class="text-center">{{ $item->content }}</td>
+                <td class="text-center">{!! $item->content !!}</td>
                 <td class="text-center">
                   <form action="{{ route('admin.comment.delete', ['id' => $item->id, 'postId' => $item->post->id]) }}" method="post">
                     @csrf

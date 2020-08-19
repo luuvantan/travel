@@ -28,10 +28,14 @@ class ExperienceController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 1)
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 1)
                     ->paginate(10);
         } else {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 1)
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 1)
                     ->where('provincial_id', $provincialId['id'])
                     ->paginate(10);
         }
@@ -48,12 +52,16 @@ class ExperienceController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 4)
-                    ->paginate(5);
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 4)
+                    ->paginate(10);
         } else {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 4)
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 4)
                     ->where('provincial_id', $provincialId['id'])
-                    ->paginate(5);
+                    ->paginate(10);
         }
         
         return view('experiences.index', \compact('title', 'provincials', 'datas'));
@@ -66,12 +74,16 @@ class ExperienceController extends Controller
         $filterProvincial = $request->provincial ?? '';
         $provincialId = Provincial::where('name', $filterProvincial)->select('id')->first();
         if(empty($provincialId)) {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 2)
-                    ->paginate(5);
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 2)
+                    ->paginate(10);
         } else {
-            $datas = Post::with('user:id,name,avatar,email')->where('category_id', 2)
+            $datas = Post::with('user:id,name,avatar,email')
+                    ->where('status', 1)
+                    ->where('category_id', 2)
                     ->where('provincial_id', $provincialId['id'])
-                    ->paginate(5);
+                    ->paginate(10);
         }
         
         return view('experiences.index', \compact('title', 'provincials', 'datas'));

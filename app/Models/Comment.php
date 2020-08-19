@@ -15,4 +15,9 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
+
+    public function response_comment()
+    {
+        return $this->hasMany('App\Models\ResponseComment')->with('user:id,name,avatar,email');
+    }
 }

@@ -17,7 +17,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Tiêu Đề Bài Viết :</label>
+                    <label for="">Tiêu Đề Bài Viết <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                     <textarea class="form-control" type="text" name="title">{{ old('title') }}</textarea>
@@ -29,7 +29,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Ảnh Tiêu Đề :</label>
+                    <label for="">Ảnh Tiêu Đề <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                     <input id="upload" class="" type="file" name="image">
@@ -42,7 +42,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Địa Điểm :</label>
+                    <label for="">Địa Điểm <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                     <select id="provincial" name="provincial_id" class="form-control" style="width: 100%;">
@@ -59,7 +59,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Địa Danh Cụ Thể :</label>
+                    <label for="">Địa Danh Cụ Thể <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                     <input class="form-control" type="text" name="place" value="{{ old('place') }}">
@@ -71,7 +71,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Thể Loại :</label>
+                    <label for="">Thể Loại <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                 <select id="category" name="category_id" class="form-control" style="width: 100%;">
@@ -88,7 +88,7 @@
             
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Nội Dung :</label>
+                    <label for="">Nội Dung <span style="color:red;font-size:20px;">*</span> :</label>
                 </div>
                 <div class="col-9">
                     <div class="h-100">
