@@ -44,6 +44,7 @@
                             <td style="color: #9b9b9b !important; padding-top:auto;">
                                 {{ $post->status == 1 ? 'đã phê duyệt' : "chờ phê duyệt" }}
                             </td>
+                            <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary is-edit" style="float: right;">Sửa bài viết</a></td>
                             <td>
                                 <form action="{{ route('post.delete', ['post_id' => $post->id, 'checkUser' => $isCheckUser, 'email' => $userSearch->email]) }}"
                                     method="post" style="display: inline">

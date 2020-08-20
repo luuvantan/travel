@@ -9,6 +9,7 @@ use App\Models\Vote;
 use App\Models\Provincial;
 use App\Models\Category;
 use App\Http\Requests\CreatePost;
+use App\Http\Requests\EditPost;
 use App\Helpers\Crawler;
 
 class PostController extends Controller
@@ -112,7 +113,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Sửa bài viết";
+        $provincials = Provincial::orderBy('name')->get();
+        $categorys = Category::where('id', '!=', 3)->get();
+        $post = Post::find($id);
+
+        return view('Posts.edit', \compact('title', 'provincials', 'categorys', 'post'));
     }
 
     /**
@@ -122,9 +128,31 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditPost $request, $id)
     {
-        //
+        $getEmail = \Auth::user()->email;
+        $post = Post::find($id);
+        $data['title'] = $request['title'];
+        $data['provincial_id'] = $request['provincial_id'];
+        $data['category_id'] = $request['category_id'];
+        $data['place'] = $request['place'];
+        $data['text'] = $request['text'];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'public/'. $request['category_id']. '/' . $request['provincial_id'] . '/' . $name;
+            \Storage::put($filePath, file_get_contents($image));
+
+            $data['url_img'] = \Storage::url($filePath);
+        }
+
+        if($post->update($data)) {
+
+            return redirect()->route('profile.showProfile', ['email' => $getEmail])->with('alert-success', 'Chỉnh sửa bài viết thành công');
+        }
+
+        return redirect()->route('profile.showProfile', ['email' => $getEmail])->with('alert-danger', 'Chỉnh sửa bài viết thất bại');
     }
 
     /**
