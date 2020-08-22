@@ -22,8 +22,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         // $test = new Crawler();
-        // list($t, $g) = $test->Crawls("https://blogyeuphuot.com/kinh-nghiem-phuot-ta-xua-san-may-thoa-suc-check-in-song-ao.html");
-        // dd($t, $g);
+        // $t = $test->getUrlCrawl("https://blogyeuphuot.com/phuot-mien-bac");
+        // dd($t);
         $posts = Post::all();
 
         return view('Posts.index', compact('posts'));

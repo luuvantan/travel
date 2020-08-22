@@ -41,9 +41,10 @@ class HomeController extends Controller
 
         $suggests = Post::with('user:id,name,avatar,email')
             ->where('status', 1)
-            ->with(['comment'])->get()
+            ->get()
             ->sortByDesc('countComment')->take(8);
 
+            // dd($suggests);
         $dataHighlights = Post::with('user:id,name,avatar,email')
             ->where('status', 1)
             ->with(['vote'])->get()
