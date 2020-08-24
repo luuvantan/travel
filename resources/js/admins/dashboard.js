@@ -51,7 +51,7 @@ $(document).ready(function() {
     let category = $('#category').data('category');
     let chartData = [];
     category.forEach(function(element){
-        let ele = {name : element.category.name, y : parseFloat(element.getCategory)};
+        let ele = {name : element.category.name, y : parseFloat(element.value)};
         chartData.push(ele);
     });
     console.log(chartData);

@@ -42,12 +42,20 @@ class DashboardController extends Controller
         $range = \Carbon\Carbon::now();
         $get_range = date_format($range,"Y/m/d");
         $date_range = date_format($range,"d/m/Y");
-        $postByDate = Post::select(DB::raw('date(created_at) as getDate'), DB::raw('COUNT(*) as value'))
-                    ->where('created_at', '>=', $date_range)
-                    ->groupBy('getDate')
-                    ->orderBy('getDate', 'ASC')
-                    ->get();
+        // $postByDate = Post::select(DB::raw('month(created_at) as getDate'), DB::raw('COUNT(*) as value'))
+        //             // ->where('created_at', '>=', $date_range)
+        //             ->groupBy('getDate')
+        //             ->orderBy('getDate', 'ASC')
+        //             ->get();
 
+        $postByDate = Post::select(DB::raw("DATE_FORMAT(created_at, '%m-%Y') as getDate"),
+                DB::raw('YEAR(created_at) as year, MONTH(created_at) as month'),
+                DB::raw('COUNT(*) as value'))
+                // ->where('created_at', '>=', $date_range)
+                ->groupBy('getDate')
+                ->orderBy('getDate', 'ASC')
+                ->get();
+ 
         return $postByDate;
     }
 
