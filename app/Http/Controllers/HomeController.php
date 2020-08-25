@@ -39,10 +39,15 @@ class HomeController extends Controller
             ->orderBy('created_at', 'DESC')
             ->take(8)->get();
 
+        // $suggests = Post::with('user:id,name,avatar,email')
+        //     ->where('status', 1)
+        //     ->get()
+        //     ->sortByDesc('countComment')->take(8);
         $suggests = Post::with('user:id,name,avatar,email')
-            ->where('status', 1)
-            ->get()
-            ->sortByDesc('countComment')->take(8);
+            ->join('comments', 'posts.id', 'comments.post_id')
+            ->where('posts.status', 1)
+            ->orderBy('comments.created_at', 'DESC')
+            ->take(8)->get();
 
             // dd($suggests);
         $dataHighlights = Post::with('user:id,name,avatar,email')
@@ -51,6 +56,7 @@ class HomeController extends Controller
             ->sortByDesc('sumVote');
 
         $highlights = $this->customPaginate($dataHighlights);
+        // dd($highlights, $suggests);
 
         return view("homes.overview", \compact('title', 'news', 'suggests', 'highlights'));
     }

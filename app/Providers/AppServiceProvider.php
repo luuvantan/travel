@@ -24,7 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $highlights = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->limit(9)->get();
-        view()->share('highlights', $highlights);
+        $footers = Post::with('user:id,name,avatar')->orderBy('created_at', 'DESC')->limit(9)->get();
+        view()->share('footers', $footers);
     }
 }
+ 

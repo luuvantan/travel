@@ -24,10 +24,10 @@
                <div class="panel panel-default">
                     <div class="panel-thumbnail">
                         <a href="{{ $suggest->link }}" title="image 1" class="thumb">
-                            <img style="height:200px;" class="card-img-top" src="{{ $suggest->url_img }}" alt="Card image">
+                            <img style="height:300px;" class="card-img-top" src="{{ $suggest->url_img }}" alt="Card image">
                             <div class="card-img-overlay div-text">
                                 <h4 class="card-text">Du Lịch {{ $suggest->provincial->name }}</h4>
-                                <p class="card-text">{{ mb_substr($suggest->title, 0, 60, 'UTF-8') }}</p>
+                                <p class="card-text">{{ mb_substr($suggest->title, 0, 40, 'UTF-8') }}</p>
                             </div>
                         </a>
                     </div>
