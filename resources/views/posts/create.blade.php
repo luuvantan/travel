@@ -42,7 +42,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Địa Điểm <span style="color:red;font-size:20px;">*</span> :</label>
+                    <label for="">Địa Điểm :</label>
                 </div>
                 <div class="col-9">
                     <select id="provincial" name="provincial_id" class="form-control" style="width: 100%;">
@@ -59,7 +59,7 @@
 
             <div class="row p-3">
                 <div class="col-3">
-                    <label for="">Địa Danh Cụ Thể <span style="color:red;font-size:20px;">*</span> :</label>
+                    <label for="">Địa Danh Cụ Thể :</label>
                 </div>
                 <div class="col-9">
                     <input class="form-control" type="text" name="place" value="{{ old('place') }}">

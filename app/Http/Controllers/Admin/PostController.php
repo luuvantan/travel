@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::with(['category'])
+        $posts = Post::with(['category'])->with(['provincial'])
             ->orderBy('status', 'asc')
             ->paginate(config('travel.paginate'));
 

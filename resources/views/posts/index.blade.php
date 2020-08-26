@@ -33,11 +33,11 @@
                 </div>
                 <div class="wrap-img-text mt-4 mb-2" id="news-related">
                     <ul class="">
-                        @foreach($news as $new)
+                        @foreach($relations as $relation)
                         <li class="pb-3">
-                            <a href="{{ $new->link }}">
+                            <a href="{{ $relation->link }}">
                                 <i class="fa fa-pencil pr-3" aria-hidden="true"></i>
-                                {{ mb_substr($new->title, 0, 60, 'UTF-8') }} ...
+                                {{ mb_substr($relation->title, 0, 60, 'UTF-8') }} ...
                             </a>
                         </li>
                         @endforeach

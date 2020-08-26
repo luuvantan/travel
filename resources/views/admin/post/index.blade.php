@@ -45,7 +45,7 @@
                 <td class="text-center">{{ $key + 1 }}</td>
                 <td class="text-center">{{ $item->name }}</td>
                 <td class="text-center">{{ $item->category->name ?? '' }}</td>
-                <td class="text-center">{{ $item->place }}</td>
+                <td class="text-center">{{ $item->provincial->name }}</td>
                 <td class="text-center">{{ $item->title }}</td>
                 <td class="text-center">
                   @if ($item->status == 0)
