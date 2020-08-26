@@ -45,11 +45,14 @@ class HomeController extends Controller
         //     ->sortByDesc('countComment')->take(8);
         $suggests = Post::with('user:id,name,avatar,email')
             ->join('comments', 'posts.id', 'comments.post_id')
+            ->select('posts.id', 'posts.user_id', 'posts.name', 'posts.category_id', 'posts.provincial_id',
+            'posts.place', 'posts.title', 'posts.content', 'posts.url_img', 'posts.status',
+            'comments.id as comment_id', 'comments.created_at as comment_create')
             ->where('posts.status', 1)
-            ->orderBy('comments.created_at', 'DESC')
+            ->groupBy('posts.id')
+            ->orderBy('comment_create', 'DESC')
             ->take(8)->get();
 
-            // dd($suggests);
         $dataHighlights = Post::with('user:id,name,avatar,email')
             ->where('status', 1)
             ->with(['vote'])->get()

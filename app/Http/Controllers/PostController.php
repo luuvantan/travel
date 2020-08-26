@@ -11,6 +11,8 @@ use App\Models\Category;
 use App\Http\Requests\CreatePost;
 use App\Http\Requests\EditPost;
 use App\Helpers\Crawler;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
@@ -33,10 +35,16 @@ class PostController extends Controller
     public function pagePost(Request $request, $title, $post_id)
     {
         $user_id = \Auth::id();
-        $post = Post::with('user:id,name,avatar,email')
+        $post = Post::with('user:id,name,avatar,email')->with('provincial')
                 ->where('id', $post_id)->first();
+        $region_id = $post->provincial->region_id;
+        $provincial_id = $post->provincial_id;
 
         $news = Post::whereNotIn('id', [$post_id])->orderBy('created_at', 'DESC')->paginate(8);
+
+        $relations = Post::whereHas('provincial', function (Builder $query) use($region_id, $provincial_id) {
+            $query->where('id', $provincial_id)->orWhere('region_id', $region_id);
+        })->whereNotIn('id', [$post_id])->take(8)->get();
 
         $votes = Vote::where('post_id', $post_id);
         $countVote = $votes->get()->count('id');
@@ -47,7 +55,7 @@ class PostController extends Controller
                     ->where('post_id', $post_id)
                     ->orderBy('created_at', 'DESC')->get();
 
-        return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote', 'comments'));
+        return view('Posts.index', compact('post', 'news', 'countVote', 'average', 'userVote', 'comments', 'relations'));
     }
 
     /**
@@ -136,7 +144,7 @@ class PostController extends Controller
         $data['provincial_id'] = $request['provincial_id'];
         $data['category_id'] = $request['category_id'];
         $data['place'] = $request['place'];
-        $data['text'] = $request['text'];
+        $data['content'] = $request['text'];
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
