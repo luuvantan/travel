@@ -18,9 +18,9 @@
                         <h4 style="color:#565e65">Chủ đề nổi bật</h4>
                     </div>
                         <div class="mt-2">
-                            @foreach($highlights as $highlight)
-                            <a href="{{ $highlight->link }}" class="tag-cloud-link hashtag" 
-                                style="font-size: 20.181818181818px;">{{ mb_substr(strip_tags($highlight->title), 0, 30, 'UTF-8') }}...</a>
+                            @foreach($footers as $footer)
+                            <a href="{{ $footer->link }}" class="tag-cloud-link hashtag" 
+                                style="font-size: 20.181818181818px;">{{ mb_substr(strip_tags($footer->title), 0, 30, 'UTF-8') }}...</a>
                             @endforeach
                         </div>
                     </div>
