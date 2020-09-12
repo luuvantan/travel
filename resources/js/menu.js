@@ -29,14 +29,14 @@ $(document).ready(function () {
   $("#search-ajax").typeahead({
     hint: true,
     highlight: true,
-    minLength: 1
+    minLength: 1,
+    limit: Infinity
   },[
     {
-      // source: engine1.ttAdapter(),
       source: engine.ttAdapter(),
       name: 'post',
       display: function(data) {
-        return data.title;
+        return data;
       },
       templates: {
         empty: [

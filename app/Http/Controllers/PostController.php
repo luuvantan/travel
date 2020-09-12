@@ -192,7 +192,7 @@ class PostController extends Controller
     public function searchByValue(Request $request)
     {
         $param = $request->only(['value']);
-        $searchs = Post::where('title', 'like', '%' . $param['value'] . '%')->get();
+        $searchs = Post::where('title', 'like', '%' . $param['value'] . '%')->limit(5)->get();
 
         return response()->json($searchs);
     }
